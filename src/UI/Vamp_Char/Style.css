@@ -2,6 +2,15 @@
     -fx-background-color: #c4b2b2;
 }
 
+.andereEigenschaftenInputtext TextField{
+    -fx-border-color: black;
+    -fx-background-color: #a0a0a0;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-insets: 0 10 5 0;
+    -fx-background-insets: 0 10 5 0;
+}
+
 .vorteileInputText TextField{
     -fx-border-color: black;
     -fx-background-color: #a0a0a0;
