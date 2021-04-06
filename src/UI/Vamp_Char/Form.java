@@ -53,14 +53,14 @@ public class Form {
         return vBox;
     }
 
-    private VBox columnTWO() {
-        VBox vBox = new VBox();
+    private HBox columnTWO() {
+        HBox hBox = new HBox();
         Separator separator = new Separator();
         separator.setOrientation(Orientation.VERTICAL);
         Separator separator2 = new Separator();
         separator2.setOrientation(Orientation.VERTICAL);
-        vBox.getChildren().addAll(andereEigenschaften.getAndereEigenschaften(),separator,columnTwo_ColumnTwo(),separator2,columnTwo_ColumnThree());
-        return vBox;
+        hBox.getChildren().addAll(andereEigenschaften.getAndereEigenschaften(),separator,columnTwo_ColumnTwo(),separator2,columnTwo_ColumnThree());
+        return hBox;
     }
 
     private VBox columnTwo_ColumnTwo(){
