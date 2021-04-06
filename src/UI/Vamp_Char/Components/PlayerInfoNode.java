@@ -5,10 +5,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 
-public class PlayerInfo {
+public class PlayerInfoNode {
     private final HBox hBox = new HBox();
 
-    public PlayerInfo(){
+    public PlayerInfoNode(){
         hBox.setAlignment(Pos.CENTER);
         TextInputtext tI1 = new TextInputtext();
         TextInputtext tI2 = new TextInputtext();

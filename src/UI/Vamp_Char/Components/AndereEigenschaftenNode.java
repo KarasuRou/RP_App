@@ -7,13 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class AndereEigenschaften {
+public class AndereEigenschaftenNode {
 
     private final VBox root = new VBox();
     private final TextCircle TC1 = new TextCircle("andere Eigenschaften");
     private final int CIRCLE_AMOUNT = 8;
 
-    public AndereEigenschaften(){
+    public AndereEigenschaftenNode(){
         root.getChildren().add(TC1.getTextCircle());
         root.setAlignment(Pos.TOP_LEFT);
         TC1.addRow("TestTestTestTest",CIRCLE_AMOUNT);

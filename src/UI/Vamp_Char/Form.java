@@ -9,13 +9,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Form {
-    private final PlayerInfo playerInfo = new PlayerInfo();
+    private final PlayerInfoNode playerInfoNode = new PlayerInfoNode();
     private final Menue menuBar = new Menue();
     private final AttributeNode attributeNode = new AttributeNode();
     private final FaehigkeitenNode faehigkeitenNode = new FaehigkeitenNode();
     private final VorteileNode vorteileNode = new VorteileNode();
 
-    private final AndereEigenschaften andereEigenschaften = new AndereEigenschaften();
+    private final AndereEigenschaftenNode andereEigenschaftenNode = new AndereEigenschaftenNode();
     private final WegNode wegNode = new WegNode();
     private final WillenskraftNode willenskraftNode = new WillenskraftNode();
     private final BlutvorratNode blutvorratNode = new BlutvorratNode();
@@ -48,7 +48,7 @@ public class Form {
 
     private VBox columnONE(){
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(playerInfo.getPlayerInfo(), new Separator(), attributeNode.getFaehigkeitenNode(), new Separator());
+        vBox.getChildren().addAll(playerInfoNode.getPlayerInfo(), new Separator(), attributeNode.getFaehigkeitenNode(), new Separator());
         vBox.getChildren().addAll(faehigkeitenNode.getFaehigkeitenNode(), new Separator(), vorteileNode.getVorteileNode());
         return vBox;
     }
@@ -59,7 +59,7 @@ public class Form {
         separator.setOrientation(Orientation.VERTICAL);
         Separator separator2 = new Separator();
         separator2.setOrientation(Orientation.VERTICAL);
-        hBox.getChildren().addAll(andereEigenschaften.getAndereEigenschaften(),separator,columnTwo_ColumnTwo(),separator2,columnTwo_ColumnThree());
+        hBox.getChildren().addAll(andereEigenschaftenNode.getAndereEigenschaften(),separator,columnTwo_ColumnTwo(),separator2,columnTwo_ColumnThree());
         return hBox;
     }
 
