@@ -14,7 +14,13 @@ public class Form {
     private final AttributeNode attributeNode = new AttributeNode();
     private final FaehigkeitenNode faehigkeitenNode = new FaehigkeitenNode();
     private final VorteileNode vorteileNode = new VorteileNode();
+
     private final AndereEigenschaften andereEigenschaften = new AndereEigenschaften();
+    private final WegNode wegNode = new WegNode();
+    private final WillenskraftNode willenskraftNode = new WillenskraftNode();
+    private final BlutvorratNode blutvorratNode = new BlutvorratNode();
+    private final GesundheitNode gesundheitNode = new GesundheitNode();
+    private final ClansschwaecheNode clansschwaecheNode = new ClansschwaecheNode();
 
     public Form(){
         Stage primaryStage = new Stage();
@@ -53,7 +59,18 @@ public class Form {
         separator.setOrientation(Orientation.VERTICAL);
         Separator separator2 = new Separator();
         separator2.setOrientation(Orientation.VERTICAL);
-        vBox.getChildren().addAll(andereEigenschaften.getAndereEigenschaften(),separator,separator2);
+        vBox.getChildren().addAll(andereEigenschaften.getAndereEigenschaften(),separator,columnTwo_ColumnTwo(),separator2,columnTwo_ColumnThree());
+        return vBox;
+    }
+
+    private VBox columnTwo_ColumnTwo(){
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(wegNode.getWegNode(),new Separator(),willenskraftNode.getWillenskraftNode(),new Separator(),blutvorratNode.getBlutvorratNode());
+        return vBox;
+    }
+    private VBox columnTwo_ColumnThree(){
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(gesundheitNode.getGesundheitNode(),new Separator(), clansschwaecheNode.getClansschwaecheNode());
         return vBox;
     }
 }
