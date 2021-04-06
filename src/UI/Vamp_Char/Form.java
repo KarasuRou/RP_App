@@ -1,6 +1,5 @@
 package UI.Vamp_Char;
 
-import UI.Components.CircleRow;
 import UI.Vamp_Char.Components.*;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
@@ -15,6 +14,7 @@ public class Form {
     private final AttributeNode attributeNode = new AttributeNode();
     private final FaehigkeitenNode faehigkeitenNode = new FaehigkeitenNode();
     private final VorteileNode vorteileNode = new VorteileNode();
+    private final AndereEigenschaften andereEigenschaften = new AndereEigenschaften();
 
     public Form(){
         Stage primaryStage = new Stage();
@@ -49,8 +49,11 @@ public class Form {
 
     private VBox columnTWO() {
         VBox vBox = new VBox();
-//        vBox.getChildren().add(null, new Separator(), null);
-        vBox.getChildren().addAll(new CircleRow(8,"Test").getCircleRow());
+        Separator separator = new Separator();
+        separator.setOrientation(Orientation.VERTICAL);
+        Separator separator2 = new Separator();
+        separator2.setOrientation(Orientation.VERTICAL);
+        vBox.getChildren().addAll(andereEigenschaften.getAndereEigenschaften(),separator,separator2);
         return vBox;
     }
 }
