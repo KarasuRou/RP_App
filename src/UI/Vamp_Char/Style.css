@@ -1,0 +1,44 @@
+.root{
+    -fx-background-color: #c4b2b2;
+}
+
+.vorteileInputText TextField{
+    -fx-border-color: black;
+    -fx-background-color: #a0a0a0;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-insets: 0 10 5 0;
+    -fx-background-insets: 0 10 5 0;
+}
+
+.playerInfoInputText TextField{
+    -fx-border-color: black;
+    -fx-background-color: #a0a0a0;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-insets: 0 10 5 0;
+    -fx-background-insets: 0 10 5 0;
+    -fx-min-width: 190;
+}
+
+.H1{
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+}
+
+.H2{
+    -fx-font-size: 20;
+    -fx-underline: true;
+}
+
+.normalText{
+    -fx-font-size: 15.5;
+}
+
+.playerInfo Label{
+    -fx-min-width: 90;
+}
+
+.middleRow{
+    -fx-padding: 0 20 0 20;
+}

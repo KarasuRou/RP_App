@@ -1,0 +1,19 @@
+TODO:
+- Deactivate Aura over menu
+- Schaden + Leben (Inputtext)
+- 2. Gesundheitswert
+- Inventar - Dabei / Besitz - Außerhalb -> Notizen (drunter als Pane)
+- Vorteile / Nachteile? -> Markieren (rot nachteil, grün vorteil)
+- Fähigkeiten Spezialisierungen hinzufügen (Menüpunkt, external Form, only with ok save)
+
+Possible TODO:
+- Erfahrung zuweisen zu d.z. Gruppe?
+- Drucken -> leere zeile bei Disziplinen und Hintergrund (https://examples.javacodegeeks.com/desktop-java/javafx/javafx-print-api/)
+- Unterschiede anzeigen von Charakteren
+- Besonderer Gegenstand => temp + Werte [Item System?]
+
+    .Meisterschirm:
+        - Temp Buffs (Short List [Alp. geordnet + Stärke geordnet] => Design Wulf absprechen
+
+Not Possible TODO:
+- Verwendeter Gegenstand => temp Erhöhung
