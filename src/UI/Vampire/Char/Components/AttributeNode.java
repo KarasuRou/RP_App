@@ -1,6 +1,6 @@
-package UI.Vamp_Char.Components;
+package UI.Vampire.Char.Components;
 
-import UI.Components.TextCircle;
+import UI.Vampire.Components.TextCircle;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;

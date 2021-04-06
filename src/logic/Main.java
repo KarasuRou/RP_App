@@ -1,13 +1,9 @@
 package logic;
 
-import UI.Vamp_Char.Form;
+import UI.Vampire.Char.Form;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import logic.Vamp_Char.Vamp_CharController;
-import model.Vamp_Char;
-
-import java.util.Arrays;
 
 public class Main extends Application {
 

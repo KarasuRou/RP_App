@@ -1,4 +1,4 @@
-package UI.Vamp_Char.Components;
+package UI.Vampire.Char.Components;
 
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;

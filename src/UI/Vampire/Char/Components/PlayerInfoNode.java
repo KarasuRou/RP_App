@@ -1,6 +1,6 @@
-package UI.Vamp_Char.Components;
+package UI.Vampire.Char.Components;
 
-import UI.Components.TextInputtext;
+import UI.Vampire.Components.TextInputtext;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;

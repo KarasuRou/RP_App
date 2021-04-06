@@ -1,4 +1,4 @@
-package UI.Components;
+package UI.Vampire.Components;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

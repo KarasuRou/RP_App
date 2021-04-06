@@ -1,17 +1,17 @@
-package UI.Vamp_Char.Components;
+package UI.Vampire.Char.Components;
 
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
-public class WegNode { //TODO
+public class BlutvorratNode { //TODO
 
     private final VBox root = new VBox();
-
-    public WegNode(){
+    public BlutvorratNode(){
 
     }
 
-    public Node getWegNode(){
+    public Node getBlutvorratNode(){
         return root;
+
     }
 }

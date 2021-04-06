@@ -1,6 +1,6 @@
-package UI.Vamp_Char;
+package UI.Vampire.Char;
 
-import UI.Vamp_Char.Components.*;
+import UI.Vampire.Char.Components.*;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.*;

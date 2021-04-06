@@ -1,6 +1,5 @@
-package UI.Components;
+package UI.Vampire.Components;
 
-import javafx.beans.property.StringProperty;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

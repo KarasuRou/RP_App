@@ -1,4 +1,4 @@
-package UI.Components;
+package UI.Vampire.Components;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;
