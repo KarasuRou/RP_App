@@ -9,11 +9,12 @@
 .auraWertTextField{
     -fx-min-width: 39.0;
     -fx-max-width: 40.0;
+    -fx-font-size: 14;
 }
 
 .auraBezeichnung Label{
-    -fx-min-width: 65.0;
-    -fx-max-width: 66.0;
+    -fx-min-width: 45.0;
+    -fx-max-width: 46.0;
 }
 
 .vampireTextField TextField{
