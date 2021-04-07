@@ -22,16 +22,16 @@ public class AttributeNode {
         hBox.getChildren().addAll(TC1.getTextCircle(), TC2.getTextCircle(), TC3.getTextCircle());
         root.setAlignment(Pos.CENTER);
         root.getChildren().addAll(label, hBox);
-        TC1.addRow("Körperkraft", CIRCLE_AMOUNT);
-        TC1.addRow("Geschick", CIRCLE_AMOUNT);
-        TC1.addRow("Widerstandsfähigkeit", CIRCLE_AMOUNT);
-        TC2.addRow("Charisma", CIRCLE_AMOUNT);
-        TC2.addRow("Manipulation", CIRCLE_AMOUNT);
-        TC2.addRow("Erscheinungsbild", CIRCLE_AMOUNT);
+        TC1.addRow("Körperkraft", CIRCLE_AMOUNT,true);
+        TC1.addRow("Geschick", CIRCLE_AMOUNT,true);
+        TC1.addRow("Widerstandsfähigkeit", CIRCLE_AMOUNT,true);
+        TC2.addRow("Charisma", CIRCLE_AMOUNT,true);
+        TC2.addRow("Manipulation", CIRCLE_AMOUNT,true);
+        TC2.addRow("Erscheinungsbild", CIRCLE_AMOUNT,true);
         TC2.addNewStyle("middleRow");
-        TC3.addRow("Wahrnehmung", CIRCLE_AMOUNT);
-        TC3.addRow("Intelligenz", CIRCLE_AMOUNT);
-        TC3.addRow("Geistesschärfe", CIRCLE_AMOUNT);
+        TC3.addRow("Wahrnehmung", CIRCLE_AMOUNT,true);
+        TC3.addRow("Intelligenz", CIRCLE_AMOUNT,true);
+        TC3.addRow("Geistesschärfe", CIRCLE_AMOUNT,true);
     }
 
     public Node getFaehigkeitenNode(){

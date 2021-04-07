@@ -25,11 +25,14 @@ public class PlayerInfoNode {
         tI3.addRow("Erfahrung:");
         tI1.addNewStyle("playerInfo");
         tI1.addNewStyle("playerInfoInputText");
+        tI1.addNewStyle("vampireTextField");
         tI2.addNewStyle("playerInfo");
         tI2.addNewStyle("playerInfoInputText");
+        tI2.addNewStyle("vampireTextField");
         tI2.addNewStyle("middleRow");
         tI3.addNewStyle("playerInfo");
         tI3.addNewStyle("playerInfoInputText");
+        tI3.addNewStyle("vampireTextField");
     }
 
     public Node getPlayerInfo(){return hBox;}

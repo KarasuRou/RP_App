@@ -25,24 +25,24 @@ public class VorteileNode {
         root.setAlignment(Pos.CENTER);
         root.getChildren().addAll(label, hBox);
 
-        IC1.addRow("",CIRCLE_AMOUNT);
-        IC1.addRow("",CIRCLE_AMOUNT);
-        IC1.addRow("",CIRCLE_AMOUNT);
-        IC1.addRow("",CIRCLE_AMOUNT);
-        IC1.addRow("",CIRCLE_AMOUNT);
-        IC1.addNewStyle("vorteileInputText");
+        IC1.addRow("",CIRCLE_AMOUNT,false);
+        IC1.addRow("",CIRCLE_AMOUNT,false);
+        IC1.addRow("",CIRCLE_AMOUNT,false);
+        IC1.addRow("",CIRCLE_AMOUNT,false);
+        IC1.addRow("",CIRCLE_AMOUNT,false);
+        IC1.addNewStyle("vampireTextField");
 
-        IC2.addRow("",CIRCLE_AMOUNT);
-        IC2.addRow("",CIRCLE_AMOUNT);
-        IC2.addRow("",CIRCLE_AMOUNT);
-        IC2.addRow("",CIRCLE_AMOUNT);
-        IC2.addRow("",CIRCLE_AMOUNT);
-        IC2.addNewStyle("vorteileInputText");
+        IC2.addRow("",CIRCLE_AMOUNT,false);
+        IC2.addRow("",CIRCLE_AMOUNT,false);
+        IC2.addRow("",CIRCLE_AMOUNT,false);
+        IC2.addRow("",CIRCLE_AMOUNT,false);
+        IC2.addRow("",CIRCLE_AMOUNT,false);
+        IC2.addNewStyle("vampireTextField");
         IC2.addNewStyle("middleRow");
 
-        TC1.addRow("Gewissen/Überzeugung",CIRCLE_AMOUNT_TUGENDEN);
-        TC1.addRow("Selbstbeherrschung/Instinkt",CIRCLE_AMOUNT_TUGENDEN);
-        TC1.addRow("Mut",CIRCLE_AMOUNT_TUGENDEN);
+        TC1.addRow("Gewissen/Überzeugung",CIRCLE_AMOUNT_TUGENDEN,true);
+        TC1.addRow("Selbstbeherrschung/Instinkt",CIRCLE_AMOUNT_TUGENDEN,true);
+        TC1.addRow("Mut",CIRCLE_AMOUNT_TUGENDEN,true);
     }
 
     public Node getVorteileNode(){

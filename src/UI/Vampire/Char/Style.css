@@ -2,16 +2,21 @@
     -fx-background-color: #c4b2b2;
 }
 
-.andereEigenschaftenInputtext TextField{
-    -fx-border-color: black;
-    -fx-background-color: #a0a0a0;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-    -fx-border-insets: 0 10 5 0;
-    -fx-background-insets: 0 10 5 0;
+.transparentTextField{
+    -fx-background-color: Transparent !important;
 }
 
-.vorteileInputText TextField{
+.auraWertTextField{
+    -fx-min-width: 39.0;
+    -fx-max-width: 40.0;
+}
+
+.auraBezeichnung Label{
+    -fx-min-width: 65.0;
+    -fx-max-width: 66.0;
+}
+
+.vampireTextField TextField{
     -fx-border-color: black;
     -fx-background-color: #a0a0a0;
     -fx-background-radius: 5;
@@ -21,12 +26,6 @@
 }
 
 .playerInfoInputText TextField{
-    -fx-border-color: black;
-    -fx-background-color: #a0a0a0;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-    -fx-border-insets: 0 10 5 0;
-    -fx-background-insets: 0 10 5 0;
     -fx-min-width: 190;
 }
 

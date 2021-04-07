@@ -14,11 +14,11 @@ public class AndereEigenschaftenNode {
     public AndereEigenschaftenNode(){
         root.getChildren().add(ITC.getInputtextCircle());
         root.setAlignment(Pos.TOP_LEFT);
-        ITC.addRow("TestTestTestTest",CIRCLE_AMOUNT);
-        ITC.addRow("Test",CIRCLE_AMOUNT);
-        ITC.addRow("Test",CIRCLE_AMOUNT);
-        ITC.addRow("Test",CIRCLE_AMOUNT);
-        ITC.addNewStyle("andereEigenschaftenInputtext");
+        ITC.addRow("TestTestTestTest",CIRCLE_AMOUNT,false);
+        ITC.addRow("Test",CIRCLE_AMOUNT,false);
+        ITC.addRow("Test",CIRCLE_AMOUNT,false);
+        ITC.addRow("Test",CIRCLE_AMOUNT,false);
+        ITC.addNewStyle("vampireTextField");
     }
 
     public void addRow(){ //TODO

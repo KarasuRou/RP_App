@@ -1,7 +1,6 @@
 package UI.Vampire.Components;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.*;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
@@ -17,23 +16,30 @@ public class CircleRow {
     private final Circle[] circleRow;
     private final Color FILLED = Color.RED;
     private final Color UNFILLED = Color.WHITE;
-    private final IntegerProperty value = new SimpleIntegerProperty(1);
+    private final IntegerProperty value = new SimpleIntegerProperty(0);
 
-    public CircleRow(int circleAmount, String bezeichnung) {
+    public CircleRow(int circleAmount, String bezeichnung, Boolean alreadyOneActive) {
         this.circleAmount = circleAmount;
         this.bezeichnung = bezeichnung;
         circleRow = new Circle[this.circleAmount];
-        initCircleRow();
+        initCircleRow(alreadyOneActive);
+        value.setValue(setValue(alreadyOneActive));
+    }
+    private int setValue(Boolean alreadyOneActive){
+        if (alreadyOneActive)
+            return 1;
+        else
+            return 0;
     }
 
-    private void initCircleRow(){
+    private void initCircleRow(Boolean alreadyOneActive){
         for (int i = 0; i < circleAmount; i++) {
             Circle circle = new Circle();
             circle.setRadius(10);
             circle.setStroke(Color.BLACK);
             circle.setStrokeWidth(1);
             circle.setFill(UNFILLED);
-            if (i==0)
+            if (i==0 && alreadyOneActive)
                 circle.setFill(FILLED);
 
             int finalI = i;
@@ -49,6 +55,11 @@ public class CircleRow {
                             circleRow[y].setFill(UNFILLED);
                         }
                     }
+                    else if (event.getButton().equals(MouseButton.SECONDARY) && finalI == 0 && !alreadyOneActive){
+                        value.setValue(finalI);
+                        for (int y=circleAmount-1;y>=finalI;y--)
+                            circleRow[y].setFill(UNFILLED);
+                    }
                 }
             });
             circleRow[i] = circle;
@@ -59,5 +70,9 @@ public class CircleRow {
         HBox hBox = new HBox();
         hBox.getChildren().addAll(circleRow);
         return hBox;
+    }
+
+    public IntegerProperty getValue(){
+        return value;
     }
 }

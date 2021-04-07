@@ -19,11 +19,11 @@ public class InputtextCircle {
         root.setAlignment(Pos.CENTER);
     }
 
-    public void addRow(String designation, int CircleAmount){
+    public void addRow(String designation, int CircleAmount, Boolean alreadyOneActive){
         HBox V1 = new HBox();
         TextField textField = new TextField();
         V1.getChildren().add(textField);
-        V1.getChildren().add(new CircleRow(CircleAmount,designation).getCircleRow());
+        V1.getChildren().add(new CircleRow(CircleAmount,designation,alreadyOneActive).getCircleRow());
         hBox.getChildren().add(V1);
     }
 

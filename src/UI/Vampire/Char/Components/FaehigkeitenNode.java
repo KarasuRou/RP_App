@@ -26,42 +26,42 @@ public class FaehigkeitenNode {
     }
 
     private void setTC1(){
-        TC1.addRow("Aufmerksamkeit",CIRCLE_AMOUNT);
-        TC1.addRow("Ausdruck",CIRCLE_AMOUNT);
-        TC1.addRow("Ausflüchte",CIRCLE_AMOUNT);
-        TC1.addRow("Ausweichen",CIRCLE_AMOUNT);
-        TC1.addRow("Diebstahl",CIRCLE_AMOUNT);
-        TC1.addRow("Einschüchtern",CIRCLE_AMOUNT);
-        TC1.addRow("Empathie",CIRCLE_AMOUNT);
-        TC1.addRow("Führungsqualitäten",CIRCLE_AMOUNT);
-        TC1.addRow("Handgemenge",CIRCLE_AMOUNT);
-        TC1.addRow("Sportlichkeit",CIRCLE_AMOUNT);
+        TC1.addRow("Aufmerksamkeit",CIRCLE_AMOUNT,false);
+        TC1.addRow("Ausdruck",CIRCLE_AMOUNT,false);
+        TC1.addRow("Ausflüchte",CIRCLE_AMOUNT,false);
+        TC1.addRow("Ausweichen",CIRCLE_AMOUNT,false);
+        TC1.addRow("Diebstahl",CIRCLE_AMOUNT,false);
+        TC1.addRow("Einschüchtern",CIRCLE_AMOUNT,false);
+        TC1.addRow("Empathie",CIRCLE_AMOUNT,false);
+        TC1.addRow("Führungsqualitäten",CIRCLE_AMOUNT,false);
+        TC1.addRow("Handgemenge",CIRCLE_AMOUNT,false);
+        TC1.addRow("Sportlichkeit",CIRCLE_AMOUNT,false);
     }
     private void setTC2(){
-        TC2.addRow("Bogenschießen",CIRCLE_AMOUNT);
-        TC2.addRow("Etikette",CIRCLE_AMOUNT);
-        TC2.addRow("Handeln",CIRCLE_AMOUNT);
-        TC2.addRow("Handwerk",CIRCLE_AMOUNT);
-        TC2.addRow("Heimlichkeit",CIRCLE_AMOUNT);
-        TC2.addRow("Nahkampf",CIRCLE_AMOUNT);
-        TC2.addRow("Reiten",CIRCLE_AMOUNT);
-        TC2.addRow("Tierkunde",CIRCLE_AMOUNT);
-        TC2.addRow("Überleben",CIRCLE_AMOUNT);
-        TC2.addRow("Vortrag",CIRCLE_AMOUNT);
+        TC2.addRow("Bogenschießen",CIRCLE_AMOUNT,false);
+        TC2.addRow("Etikette",CIRCLE_AMOUNT,false);
+        TC2.addRow("Handeln",CIRCLE_AMOUNT,false);
+        TC2.addRow("Handwerk",CIRCLE_AMOUNT,false);
+        TC2.addRow("Heimlichkeit",CIRCLE_AMOUNT,false);
+        TC2.addRow("Nahkampf",CIRCLE_AMOUNT,false);
+        TC2.addRow("Reiten",CIRCLE_AMOUNT,false);
+        TC2.addRow("Tierkunde",CIRCLE_AMOUNT,false);
+        TC2.addRow("Überleben",CIRCLE_AMOUNT,false);
+        TC2.addRow("Vortrag",CIRCLE_AMOUNT,false);
         TC2.addNewStyle("middleRow");
 
     }
     private void setTC3(){
-        TC3.addRow("Akademisches Wissen",CIRCLE_AMOUNT);
-        TC3.addRow("Folklore",CIRCLE_AMOUNT);
-        TC3.addRow("Gesetzeskenntnis",CIRCLE_AMOUNT);
-        TC3.addRow("Linguistik",CIRCLE_AMOUNT);
-        TC3.addRow("Medizin",CIRCLE_AMOUNT);
-        TC3.addRow("Nachforschungen",CIRCLE_AMOUNT);
-        TC3.addRow("Okkultismus",CIRCLE_AMOUNT);
-        TC3.addRow("Politik",CIRCLE_AMOUNT);
-        TC3.addRow("Seneschall",CIRCLE_AMOUNT);
-        TC3.addRow("Theologie",CIRCLE_AMOUNT);
+        TC3.addRow("Akademisches Wissen",CIRCLE_AMOUNT,false);
+        TC3.addRow("Folklore",CIRCLE_AMOUNT,false);
+        TC3.addRow("Gesetzeskenntnis",CIRCLE_AMOUNT,false);
+        TC3.addRow("Linguistik",CIRCLE_AMOUNT,false);
+        TC3.addRow("Medizin",CIRCLE_AMOUNT,false);
+        TC3.addRow("Nachforschungen",CIRCLE_AMOUNT,false);
+        TC3.addRow("Okkultismus",CIRCLE_AMOUNT,false);
+        TC3.addRow("Politik",CIRCLE_AMOUNT,false);
+        TC3.addRow("Seneschall",CIRCLE_AMOUNT,false);
+        TC3.addRow("Theologie",CIRCLE_AMOUNT,false);
 
     }
 
