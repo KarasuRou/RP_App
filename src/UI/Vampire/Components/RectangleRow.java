@@ -44,8 +44,8 @@ public class RectangleRow {
         HBox hBox = new HBox();
         for (int i = 0; i < rectangleAmount/rowAmount; i++) {
             Rectangle rectangle = new Rectangle();
-            rectangle.setWidth(19);
-            rectangle.setHeight(19);
+            rectangle.setWidth(20);
+            rectangle.setHeight(20);
             rectangle.setStroke(Color.BLACK);
             rectangle.setStrokeWidth(1);
             rectangle.setFill(UNFILLED);
