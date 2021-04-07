@@ -8,10 +8,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class WegNode { //TODO
+public class WegNode {
 
     private final VBox root = new VBox();
-    private final HBox aura = getAura();
     private static final CircleRow cR = new CircleRow(10,"WegWert",false);
 
     public WegNode(){
@@ -24,7 +23,8 @@ public class WegNode { //TODO
         vBox.setAlignment(Pos.CENTER);
         vBox.getStyleClass().add("vampireTextField");
         vBox.getChildren().addAll(label, wegBezeichnung);
-        root.getChildren().addAll(vBox,cR.getCircleRow(),aura);
+        HBox aura = getAura();
+        root.getChildren().addAll(vBox,cR.getCircleRow(), aura);
     }
     private HBox getAura(){
         HBox hBox = new HBox();
