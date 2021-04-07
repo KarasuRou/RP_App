@@ -42,6 +42,7 @@ public class WegNode {
         TextField textField1 = new TextField();
         textField1.textProperty().bind(cR.getValue().asString());
         textField1.getStyleClass().addAll("transparentTextField","auraWertTextField","transparentTextField");
+        textField1.setEditable(false);
 
         Label label2 = new Label(")");
         AuraWert.getChildren().addAll(label1, textField1, label2);
