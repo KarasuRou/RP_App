@@ -22,6 +22,10 @@
     -fx-background-insets: 0 0 0 0!important;
 }
 
+.gesundheit{
+    -fx-font-size: 15 !important;
+}
+
 .vampireTextField TextField{
     -fx-border-color: black;
     -fx-background-color: #a0a0a0;
