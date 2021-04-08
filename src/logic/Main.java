@@ -4,6 +4,7 @@ import UI.Vampire.Char.Form;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
+import logic.Vampire.CharController;
 
 public class Main extends Application {
 
@@ -32,7 +33,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         try {
             new Thread(() -> launch(args)).start();
-//            new Vamp_CharController().displayTemplate();
+//            new CharController().displayTemplate();
 
         } catch (Exception e) {
             e.printStackTrace();

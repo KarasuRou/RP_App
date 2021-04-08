@@ -1,4 +1,4 @@
-package logic.Vamp_Char;
+package logic.Vampire;
 
 import data.Vamp_CharData;
 import model.Vamp_Char;
@@ -6,7 +6,7 @@ import model.Vamp_Char;
 import java.sql.ResultSet;
 import java.util.Arrays;
 
-public class Vamp_CharController {
+public class CharController {
 
     private final Vamp_CharData vampCharData;
 
@@ -49,7 +49,7 @@ public class Vamp_CharController {
     }
 
 
-    public Vamp_CharController(){
+    public CharController(){
         vampCharData = new Vamp_CharData();
     }
 
