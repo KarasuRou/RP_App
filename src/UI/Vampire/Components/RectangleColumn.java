@@ -6,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -16,7 +15,7 @@ public class RectangleColumn {
     private final int rectangleAmount;
     private final String bezeichnung;
     private final Rectangle[] rectangleColumn;
-    private final HBox root = new HBox();
+    private final VBox root = new VBox();
     private final Color FILLED = Color.RED;
     private final Color UNFILLED = Color.WHITE;
     private final IntegerProperty value = new SimpleIntegerProperty(0);
