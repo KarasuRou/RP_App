@@ -7,20 +7,22 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import logic.Vampire.CharController;
 
 public class Form {
-    private final PlayerInfoNode playerInfoNode = new PlayerInfoNode();
-    private final Menue menuBar = new Menue();
-    private final AttributeNode attributeNode = new AttributeNode();
-    private final FaehigkeitenNode faehigkeitenNode = new FaehigkeitenNode();
-    private final VorteileNode vorteileNode = new VorteileNode();
+    private final static CharController charController = new CharController();
+    private final static PlayerInfoNode playerInfoNode = new PlayerInfoNode();
+    private final static Menue menuBar = new Menue();
+    private final static AttributeNode attributeNode = new AttributeNode();
+    private final static FaehigkeitenNode faehigkeitenNode = new FaehigkeitenNode();
+    private final static VorteileNode vorteileNode = new VorteileNode();
 
-    private final AndereEigenschaftenNode andereEigenschaftenNode = new AndereEigenschaftenNode();
-    private final WegNode wegNode = new WegNode();
-    private final WillenskraftNode willenskraftNode = new WillenskraftNode();
-    private final BlutvorratNode blutvorratNode = new BlutvorratNode();
-    private final GesundheitNode gesundheitNode = new GesundheitNode();
-    private final ClansschwaecheNode clansschwaecheNode = new ClansschwaecheNode();
+    private final static AndereEigenschaftenNode andereEigenschaftenNode = new AndereEigenschaftenNode();
+    private final static WegNode wegNode = new WegNode();
+    private final static WillenskraftNode willenskraftNode = new WillenskraftNode();
+    private final static BlutvorratNode blutvorratNode = new BlutvorratNode();
+    private final static GesundheitNode gesundheitNode = new GesundheitNode();
+    private final static ClansschwaecheNode clansschwaecheNode = new ClansschwaecheNode();
 
     public Form(){
         Stage primaryStage = new Stage();
@@ -36,13 +38,19 @@ public class Form {
         primaryStage.setResizable(false);
         scene.getStylesheets().add(Form.class.getResource("Style.css").toExternalForm());
         primaryStage.show();
+        charController.setNodes(
+                playerInfoNode,menuBar,attributeNode,faehigkeitenNode,vorteileNode,andereEigenschaftenNode,
+                wegNode,willenskraftNode,blutvorratNode,gesundheitNode,clansschwaecheNode
+        );
     }
 
     private HBox secondRoot(){
         HBox hbox = new HBox();
         Separator separator = new Separator();
         separator.setOrientation(Orientation.VERTICAL);
-        hbox.getChildren().addAll(columnONE(), separator, columnTWO());
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(columnTWO(), buttonField());
+        hbox.getChildren().addAll(columnONE(), separator, vBox);
         return hbox;
     }
 
@@ -72,5 +80,10 @@ public class Form {
         VBox vBox = new VBox();
         vBox.getChildren().addAll(gesundheitNode.getGesundheitNode(),new Separator(), clansschwaecheNode.getClansschwaecheNode());
         return vBox;
+    }
+
+    private HBox buttonField(){
+        HBox hBox = new HBox();
+        return hBox;
     }
 }
