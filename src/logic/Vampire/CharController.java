@@ -1,6 +1,8 @@
 package logic.Vampire;
 
+import UI.Vampire.Char.Components.*;
 import data.Vamp_CharData;
+import javafx.scene.control.MenuItem;
 import model.Vamp_Char;
 
 import java.sql.ResultSet;
@@ -9,6 +11,21 @@ import java.util.Arrays;
 public class CharController {
 
     private final Vamp_CharData vampCharData;
+    private static int count;
+
+
+    private static PlayerInfoNode playerInfoNode;
+    private static Menue menuBar;
+    private static AttributeNode attributeNode;
+    private static FaehigkeitenNode faehigkeitenNode;
+    private static VorteileNode vorteileNode;
+
+    private static AndereEigenschaftenNode andereEigenschaftenNode;
+    private static WegNode wegNode;
+    private static WillenskraftNode willenskraftNode;
+    private static BlutvorratNode blutvorratNode;
+    private static GesundheitNode gesundheitNode;
+    private static ClansschwaecheNode clansschwaecheNode;
 
     public void displayTemplate() throws Exception {
         Vamp_Char vampChar = getCharById(0);
@@ -192,9 +209,103 @@ public class CharController {
         return vampChar;
     }
 
+    public String getCharName(int id){
+        try {
+            ResultSet resultSet;
+            resultSet = vampCharData.getVampireCharName(id);
+            String name = "";
+            while (resultSet.next()){
+                name = resultSet.getString("charName");
+            }
+            return name;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "ERROR";
+    }
+
+    public String getPlayerName(int id){
+        try {
+            ResultSet resultSet;
+            resultSet = vampCharData.getVampirePlayerName(id);
+            String name = "";
+            while (resultSet.next()){
+                name = resultSet.getString("spieler");
+            }
+            return name;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "ERROR";
+    }
+
+    public int getCharCount(){
+        try {
+            ResultSet resultSet;
+            resultSet = vampCharData.getVampireCharCount();
+            while (resultSet.next()){
+                count = resultSet.getInt("anzahl");
+            }
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 
     //////////////////////////////////////////
     // Setter
     //////////////////////////////////////////
+    public void setNodes(
+            PlayerInfoNode playerInfoNode,Menue menuBar,AttributeNode attributeNode,FaehigkeitenNode faehigkeitenNode,
+            VorteileNode vorteileNode, AndereEigenschaftenNode andereEigenschaftenNode, WegNode wegNode,
+            WillenskraftNode willenskraftNode, BlutvorratNode blutvorratNode, GesundheitNode gesundheitNode,
+            ClansschwaecheNode clansschwaecheNode)
+    {
+        this.playerInfoNode = playerInfoNode;
+        this.menuBar = menuBar;
+        this.attributeNode = attributeNode;
+        this.faehigkeitenNode = faehigkeitenNode;
+        this.vorteileNode = vorteileNode;
+        this.andereEigenschaftenNode = andereEigenschaftenNode;
+        this.wegNode = wegNode;
+        this.willenskraftNode = willenskraftNode;
+        this.blutvorratNode = blutvorratNode;
+        this.gesundheitNode = gesundheitNode;
+        this.clansschwaecheNode = clansschwaecheNode;
+        setCharMenue();
+    }
+    private void setCharMenue(){
+        MenuItem[] menuItems = new MenuItem[getCharCount()];
+        for (int i = 0 ; i<menuItems.length ; i++){
+            MenuItem menuItem = new MenuItem();
+            menuItems[i] = menuItem;
+            menuItem.setId(String.valueOf(i));
+            menuItem.setText(getCharName(i) + " (" + getPlayerName(i) + ")");
+            menuItem.setOnAction(event -> {
+                int id = Integer.parseInt(event.getSource().toString().replace("MenuItem[id=","").replace(", styleClass=[menu-item]]",""));
+                setVampChar(id);
+            });
+        }
+        menuBar.setCharMenu(menuItems);
+    }
+
+    public void setVampChar(int id){
+        try {
+            Vamp_Char vampChar;
+            vampChar = getCharById(id);
+            playerInfoNode.setCharName(vampChar.getCharName());
+            playerInfoNode.setSpieler(vampChar.getSpieler());
+            playerInfoNode.setWesen(vampChar.getWesen());
+            playerInfoNode.setVerhalten(vampChar.getVerhalten());
+            playerInfoNode.setClan(vampChar.getClan());
+            playerInfoNode.setGeneration(vampChar.getGeneration());
+            playerInfoNode.setZuflucht(vampChar.getZuflucht());
+            playerInfoNode.setErfahrung(vampChar.getErfahrung());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
