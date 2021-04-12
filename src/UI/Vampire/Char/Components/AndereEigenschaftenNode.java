@@ -28,4 +28,7 @@ public class AndereEigenschaftenNode {
     public Node getAndereEigenschaften(){
         return root;
     }
+
+    public void setAndereEigenschaften(String[] andereEigenschaftenBezeichnung, int[] andereEigenschaftenWert) { //TODO
+    }
 }

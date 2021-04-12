@@ -94,4 +94,7 @@ public class GesundheitNode {
     public Node getGesundheitNode(){
         return root;
     }
+
+    public void setGesundheit(int gesundheit, int gesundheit2) { //TODO
+    }
 }

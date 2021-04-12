@@ -68,4 +68,13 @@ public class FaehigkeitenNode {
     public Node getFaehigkeitenNode(){
         return root;
     }
+
+    public void setFertigkeiten(int[] faehigkeitenFertigkeiten) { //TODO
+    }
+
+    public void setKenntnisse(int[] faehigkeitenKenntnisse) { //TODO
+    }
+
+    public void setTalente(int[] faehigkeitenTalente) { //TODO
+    }
 }

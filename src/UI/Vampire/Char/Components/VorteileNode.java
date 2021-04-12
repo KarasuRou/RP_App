@@ -48,4 +48,13 @@ public class VorteileNode {
     public Node getVorteileNode(){
         return root;
     }
+
+    public void setDisziplinen(String[] vorteileDisziplinenBezeichnung, int[] vorteileDisziplinenWert) { //TODO
+    }
+
+    public void setHintergrund(String[] vorteileHintergrundBezeichnung, int[] vorteileHintergrundWert) { //TODO
+    }
+
+    public void setTugenden(boolean[] vorteileTugendenEntscheidung, int[] vorteileTugenden) { //TODO
+    }
 }

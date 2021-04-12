@@ -54,4 +54,7 @@ public class WegNode {
     public Node getWegNode(){
         return root;
     }
+
+    public void setWeg(String weg, int wegWert) { //TODO
+    }
 }

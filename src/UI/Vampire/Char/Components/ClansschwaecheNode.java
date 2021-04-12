@@ -21,4 +21,7 @@ public class ClansschwaecheNode {
     public Node getClansschwaecheNode(){
         return root;
     }
+
+    public void setClansschwaeche(String[] clansschweache) { //TODO
+    }
 }

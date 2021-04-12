@@ -37,4 +37,13 @@ public class AttributeNode {
     public Node getFaehigkeitenNode(){
         return root;
     }
+
+    public void setGesellschaftlich(int[] attributeGesellschaftlich) { //TODO
+    }
+
+    public void setGeistig(int[] attributeGeistig) { //TODO
+    }
+
+    public void setKoerperlich(int[] attributeKoerperlich) { //TODO
+    }
 }

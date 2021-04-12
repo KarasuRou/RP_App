@@ -22,4 +22,7 @@ public class BlutvorratNode {
         return root;
 
     }
+
+    public void setBlutvorrat(int blutvorrat) { //TODO
+    }
 }

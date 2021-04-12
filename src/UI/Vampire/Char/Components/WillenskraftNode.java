@@ -23,4 +23,7 @@ public class WillenskraftNode {
     public Node getWillenskraftNode(){
         return root;
     }
+
+    public void setWillenskraft(int willenskraft, int willenskraftPool) { //TODO
+    }
 }

@@ -303,6 +303,21 @@ public class CharController {
             playerInfoNode.setGeneration(vampChar.getGeneration());
             playerInfoNode.setZuflucht(vampChar.getZuflucht());
             playerInfoNode.setErfahrung(vampChar.getErfahrung());
+            attributeNode.setGeistig(vampChar.getAttributeGeistig());
+            attributeNode.setGesellschaftlich(vampChar.getAttributeGesellschaftlich());
+            attributeNode.setKoerperlich(vampChar.getAttributeKoerperlich());
+            faehigkeitenNode.setFertigkeiten(vampChar.getFaehigkeitenFertigkeiten());
+            faehigkeitenNode.setKenntnisse(vampChar.getFaehigkeitenKenntnisse());
+            faehigkeitenNode.setTalente(vampChar.getFaehigkeitenTalente());
+            vorteileNode.setDisziplinen(vampChar.getVorteileDisziplinenBezeichnung(), vampChar.getVorteileDisziplinenWert());
+            vorteileNode.setHintergrund(vampChar.getVorteileHintergrundBezeichnung(), vampChar.getVorteileHintergrundWert());
+            vorteileNode.setTugenden(vampChar.getVorteileTugendenEntscheidung(), vampChar.getVorteileTugenden());
+            andereEigenschaftenNode.setAndereEigenschaften(vampChar.getAndereEigenschaftenBezeichnung(), vampChar.getAndereEigenschaftenWert());
+            wegNode.setWeg(vampChar.getWeg(),vampChar.getWegWert());
+            willenskraftNode.setWillenskraft(vampChar.getWillenskraft(), vampChar.getWillenskraftPool());
+            blutvorratNode.setBlutvorrat(vampChar.getBlutvorrat());
+            gesundheitNode.setGesundheit(vampChar.getGesundheit(),vampChar.getGesundheit2());
+            clansschwaecheNode.setClansschwaeche(vampChar.getClansschweache());
         } catch (Exception e) {
             e.printStackTrace();
         }
