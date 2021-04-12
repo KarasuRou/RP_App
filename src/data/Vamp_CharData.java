@@ -12,6 +12,26 @@ public class Vamp_CharData {
         conn = new dbConnection();
     }
 
+    public ResultSet getVampireCharName(int id) throws Exception{
+        String query = "SELECT charName FROM Vampire_Charakter WHERE id = %id%;";
+        query = query.replaceAll("%id%", String.valueOf(id));
+        System.out.println(query);
+        return conn.executeSelectQuery(query);
+    }
+
+    public ResultSet getVampirePlayerName(int id) throws Exception{
+        String query = "SELECT spieler FROM Vampire_Charakter WHERE id = %id%;";
+        query = query.replaceAll("%id%", String.valueOf(id));
+        System.out.println(query);
+        return conn.executeSelectQuery(query);
+    }
+
+    public ResultSet getVampireCharCount() throws Exception{
+        String query = "SELECT COUNT(id) AS anzahl FROM Vampire_Charakter;";
+        System.out.println(query);
+        return conn.executeSelectQuery(query);
+    }
+
     public ResultSet playerInfoSearchById(int id) throws Exception {
         String query = "SELECT * FROM Vampire_Charakter WHERE id = %id%;";
         query = query.replaceAll("%id%", String.valueOf(id));
