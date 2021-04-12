@@ -7,12 +7,15 @@ import javafx.scene.control.MenuItem;
 
 public class Menue {
     private MenuBar menuBar;
+    private Menu menu1 = new Menu();
+    private Menu menu2 = new Menu();
+    private Menu menu3 = new Menu();
 
-    public Menue(){
+    public Menue() {
         menuBar = new MenuBar();
-        Menu menu1 = new Menu("Datei");
-        Menu menu2 = new Menu("Extra-Informationen");
-        Menu menu3 = new Menu("Charaktere");
+        menu1.setText("Datei");
+        menu2.setText("Extra-Infos");
+        menu3.setText("Charaktere");
         menuBar.getMenus().addAll(menu1, menu2, menu3);
         MenuItem menuItem1_1 = new MenuItem("Testen");
         MenuItem menuItem1_2 = new MenuItem("Testen");
@@ -26,5 +29,9 @@ public class Menue {
 
     public Node getMenueBar() {
         return menuBar;
+    }
+
+    public void setCharMenu(MenuItem[] menuItems) {
+        menu3.getItems().addAll(menuItems);
     }
 }
