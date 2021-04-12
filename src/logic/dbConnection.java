@@ -9,8 +9,9 @@ public class dbConnection {
     public dbConnection(){
         try {
             conn = DriverManager.getConnection("jdbc:mysql:", "", "");
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            conn.setClientInfo("autoReconnect","true");
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
         }
     }
 
