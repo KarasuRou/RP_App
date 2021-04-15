@@ -2,7 +2,9 @@ package logic.Vampire;
 
 import UI.Vampire.Char.Components.*;
 import data.Vamp_CharData;
+import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 import model.Vamp_Char;
 
 import java.sql.ResultSet;
@@ -12,6 +14,7 @@ public class CharController {
 
     private final Vamp_CharData vampCharData;
     private static int count;
+    private int id = 0;
 
 
     private static PlayerInfoNode playerInfoNode;
@@ -26,9 +29,10 @@ public class CharController {
     private static BlutvorratNode blutvorratNode;
     private static GesundheitNode gesundheitNode;
     private static ClansschwaecheNode clansschwaecheNode;
+    private static ButtonField buttonField;
 
-    public void displayTemplate() throws Exception {
-        Vamp_Char vampChar = getCharById(0);
+    public void displayTemplate(int id) throws Exception {
+        Vamp_Char vampChar = getCharById(id);
         System.out.println("ID:             " + vampChar.getID());
         System.out.println("CharName:       " + vampChar.getCharName());
         System.out.println("Spieler:        " + vampChar.getSpieler());
@@ -74,10 +78,14 @@ public class CharController {
     // Getter
     //////////////////////////////////////////
     public Vamp_Char getCharById(int id) throws Exception{
+        int i = 0;
         Vamp_Char vampChar = new Vamp_Char(id);
         ResultSet resultSet;
         resultSet = vampCharData.playerInfoSearchById(id);
-        while (resultSet.next()){
+        resultSet.last();
+        int lastRow = resultSet.getRow();
+        resultSet.first();
+        for(i = 0;i<lastRow;i++){
             vampChar.setCharName(resultSet.getString("charName"));
             vampChar.setSpieler(resultSet.getString("spieler"));
             vampChar.setWesen(resultSet.getString("wesen"));
@@ -95,113 +103,135 @@ public class CharController {
             vampChar.setGesundheit(resultSet.getInt("gesundheit"));
             vampChar.setGesundheit2(resultSet.getInt("gesundheit2"));
             vampChar.setErfahrung(resultSet.getInt("erfahrung"));
+            resultSet.next();
         }
 
         resultSet = vampCharData.clansschwaecheSearchById(id);
-        int i = 0;
         resultSet.last();
-        String[] clansschwaeche = new String[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        String[] clansschwaeche = new String[lastRow];
         resultSet.first();
-        while (resultSet.next()){
-            clansschwaeche[i++] = resultSet.getString("value"); //ARRAY
+        for(i = 0;i<lastRow;i++){
+            clansschwaeche[i] = resultSet.getString("value"); //ARRAY
+            resultSet.next();
         }vampChar.setClansschweache(clansschwaeche);
 
         resultSet = vampCharData.attributeKoerperlichSearchById(id);
         i = 0;
         resultSet.last();
-        int[] attributeKoerperlich = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        int[] attributeKoerperlich = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
-            attributeKoerperlich[i++] = resultSet.getInt("value");
+        for(i = 0;i<lastRow;i++){
+            attributeKoerperlich[i] = resultSet.getInt("value");System.out.println(i + ": " + resultSet.getInt("value"));
+            resultSet.next();
         }vampChar.setAttributeKoerperlich(attributeKoerperlich);
 
         resultSet = vampCharData.attributeGesellschaftlichSearchById(id);
         i = 0;
         resultSet.last();
-        int[] attributeGesellschaftlich = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        int[] attributeGesellschaftlich = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
-            attributeGesellschaftlich[i++] = resultSet.getInt("value");
+        for(i = 0;i<lastRow;i++){
+            attributeGesellschaftlich[i] = resultSet.getInt("value");
+            resultSet.next();
         }vampChar.setAttributeGesellschaftlich(attributeGesellschaftlich);
 
         resultSet = vampCharData.attributeGeistigSearchById(id);
         i = 0;
         resultSet.last();
-        int[] attributeGeistig = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        int[] attributeGeistig = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
-            attributeGeistig[i++] = resultSet.getInt("value");
+        for(i = 0;i<lastRow;i++){
+            attributeGeistig[i] = resultSet.getInt("value");
+            resultSet.next();
         }vampChar.setAttributeGeistig(attributeGeistig);
 
         resultSet = vampCharData.faehigkeitenTalenteSearchById(id);
         i = 0;
         resultSet.last();
-        int[] faehigkeitenTalente = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        int[] faehigkeitenTalente = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
-            faehigkeitenTalente[i++] = resultSet.getInt("value");
+        for(i = 0;i<lastRow;i++){
+            faehigkeitenTalente[i] = resultSet.getInt("value");
+            resultSet.next();
         }vampChar.setFaehigkeitenTalente(faehigkeitenTalente);
 
         resultSet = vampCharData.faehigkeitenFertigkeitenSearchById(id);
         i = 0;
         resultSet.last();
-        int[] faehigkeitenFertigkeiten = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        int[] faehigkeitenFertigkeiten = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
-            faehigkeitenFertigkeiten[i++] = resultSet.getInt("value");
+        for(i = 0;i<lastRow;i++){
+            faehigkeitenFertigkeiten[i] = resultSet.getInt("value");
+            resultSet.next();
         }vampChar.setFaehigkeitenFertigkeiten(faehigkeitenFertigkeiten);
 
         resultSet = vampCharData.faehigkeitenKenntnisseSearchById(id);
         i = 0;
         resultSet.last();
-        int[] faehigkeitenKenntnisse = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        int[] faehigkeitenKenntnisse = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
-            faehigkeitenKenntnisse[i++] = resultSet.getInt("value");
+        for(i = 0;i<lastRow;i++){
+            faehigkeitenKenntnisse[i] = resultSet.getInt("value");
+            resultSet.next();
         }vampChar.setFaehigkeitenKenntnisse(faehigkeitenKenntnisse);
 
         resultSet = vampCharData.vorteileDisziplinenSearchById(id);
         i = 0;
         resultSet.last();
-        String[] vorteileDisziplinenBezeichnung = new String[resultSet.getRow()];
-        int[] vorteileDisziplinenWert = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        String[] vorteileDisziplinenBezeichnung = new String[lastRow];
+        int[] vorteileDisziplinenWert = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
+        for(i = 0;i<lastRow;i++){
             vorteileDisziplinenBezeichnung[i] = resultSet.getString("bezeichnung");
-            vorteileDisziplinenWert[i++] = resultSet.getInt("value");
+            vorteileDisziplinenWert[i] = resultSet.getInt("value");
+            resultSet.next();
         }vampChar.setVorteileDisziplinenBezeichnung(vorteileDisziplinenBezeichnung);vampChar.setVorteileDisziplinenWert(vorteileDisziplinenWert);
 
         resultSet = vampCharData.vorteileHintergrundSearchById(id);
         i = 0;
         resultSet.last();
-        String[] vorteileHintergrundBezeichnung = new String[resultSet.getRow()];
-        int[] vorteileHintergrundWert = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        String[] vorteileHintergrundBezeichnung = new String[lastRow];
+        int[] vorteileHintergrundWert = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
+        for(i = 0;i<lastRow;i++){
             vorteileHintergrundBezeichnung[i] = resultSet.getString("bezeichnung");
-            vorteileHintergrundWert[i++] = resultSet.getInt("value");
+            vorteileHintergrundWert[i] = resultSet.getInt("value");
+            resultSet.next();
         }vampChar.setVorteileHintergrundBezeichnung(vorteileHintergrundBezeichnung);vampChar.setVorteileHintergrundWert(vorteileHintergrundWert);
 
         resultSet = vampCharData.vorteileTugendenSearchById(id);
         i = 0;
         resultSet.last();
-        boolean[] vorteileTugendenEntscheidung = new boolean[resultSet.getRow()];
-        int[] vorteileTugenden = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        boolean[] vorteileTugendenEntscheidung = new boolean[lastRow];
+        int[] vorteileTugenden = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
+        for(i = 0;i<lastRow;i++){
             vorteileTugendenEntscheidung[i] = resultSet.getBoolean("entscheidung");
-            vorteileTugenden[i++] = resultSet.getInt("value");
+            vorteileTugenden[i] = resultSet.getInt("value");
+            resultSet.next();
         }vampChar.setVorteileTugenden(vorteileTugenden);vampChar.setVorteileTugendenEntscheidung(vorteileTugendenEntscheidung);
 
         resultSet = vampCharData.andereEigenschaftenSearchById(id);
         i = 0;
         resultSet.last();
-        String[] andereEigenschaftenBezeichnung = new String[resultSet.getRow()];
-        int[] andereEigenschaftenWert = new int[resultSet.getRow()];
+        lastRow = resultSet.getRow();
+        String[] andereEigenschaftenBezeichnung = new String[lastRow];
+        int[] andereEigenschaftenWert = new int[lastRow];
         resultSet.first();
-        while (resultSet.next()){
+        for(i = 0;i<lastRow;i++){
             andereEigenschaftenBezeichnung[i] = resultSet.getString("bezeichnung");
-            andereEigenschaftenWert[i++] = resultSet.getInt("value");
+            andereEigenschaftenWert[i] = resultSet.getInt("value");
+            resultSet.next();
         }vampChar.setAndereEigenschaftenBezeichnung(andereEigenschaftenBezeichnung);vampChar.setAndereEigenschaftenWert(andereEigenschaftenWert);
 
 
@@ -258,10 +288,10 @@ public class CharController {
     // Setter
     //////////////////////////////////////////
     public void setNodes(
-            PlayerInfoNode playerInfoNode,Menue menuBar,AttributeNode attributeNode,FaehigkeitenNode faehigkeitenNode,
+            PlayerInfoNode playerInfoNode, Menue menuBar, AttributeNode attributeNode, FaehigkeitenNode faehigkeitenNode,
             VorteileNode vorteileNode, AndereEigenschaftenNode andereEigenschaftenNode, WegNode wegNode,
             WillenskraftNode willenskraftNode, BlutvorratNode blutvorratNode, GesundheitNode gesundheitNode,
-            ClansschwaecheNode clansschwaecheNode)
+            ClansschwaecheNode clansschwaecheNode, ButtonField buttonField)
     {
         this.playerInfoNode = playerInfoNode;
         this.menuBar = menuBar;
@@ -274,6 +304,9 @@ public class CharController {
         this.blutvorratNode = blutvorratNode;
         this.gesundheitNode = gesundheitNode;
         this.clansschwaecheNode = clansschwaecheNode;
+        this.buttonField = buttonField;
+        setCreateNewCharButtonEvent();
+        setUpdateVampCharButtonEvent();
         setCharMenue();
     }
     private void setCharMenue(){
@@ -284,7 +317,7 @@ public class CharController {
             menuItem.setId(String.valueOf(i));
             menuItem.setText(getCharName(i) + " (" + getPlayerName(i) + ")");
             menuItem.setOnAction(event -> {
-                int id = Integer.parseInt(event.getSource().toString().replace("MenuItem[id=","").replace(", styleClass=[menu-item]]",""));
+                id = Integer.parseInt(event.getSource().toString().replace("MenuItem[id=","").replace(", styleClass=[menu-item]]",""));
                 setVampChar(id);
             });
         }
@@ -293,6 +326,7 @@ public class CharController {
 
     public void setVampChar(int id){
         try {
+            displayTemplate(id);
             Vamp_Char vampChar;
             vampChar = getCharById(id);
             playerInfoNode.setCharName(vampChar.getCharName());
@@ -322,5 +356,30 @@ public class CharController {
             e.printStackTrace();
         }
     }
+
+
+    public void updateVampChar(int id){
+        System.out.println("UPDATE");
+    }
+
+    public int createNewVampChar(){
+        System.out.println("CREATE NEW");
+        return 0;
+    }
+
+    //////////////////////////////////////////
+    // EventHandler
+    //////////////////////////////////////////
+
+    private void setUpdateVampCharButtonEvent(){
+        EventHandler<MouseEvent> event = event1 -> updateVampChar(id);
+        buttonField.setUpdateCharEvent(event);
+    }
+
+    public void setCreateNewCharButtonEvent(){
+        EventHandler<MouseEvent> event = event1 -> id = createNewVampChar();
+        buttonField.setCreateCharEvent(event);
+    }
+
 
 }

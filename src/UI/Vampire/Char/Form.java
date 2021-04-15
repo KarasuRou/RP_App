@@ -2,6 +2,7 @@ package UI.Vampire.Char;
 
 import UI.Vampire.Char.Components.*;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -23,6 +24,7 @@ public class Form {
     private final static BlutvorratNode blutvorratNode = new BlutvorratNode();
     private final static GesundheitNode gesundheitNode = new GesundheitNode();
     private final static ClansschwaecheNode clansschwaecheNode = new ClansschwaecheNode();
+    private final static ButtonField buttonField = new ButtonField();
 
     public Form(Stage stage){
         stage.setTitle("Vampire Char");
@@ -41,7 +43,7 @@ public class Form {
         scene.getStylesheets().add(Form.class.getResource("Style.css").toExternalForm());
         charController.setNodes(
                 playerInfoNode,menuBar,attributeNode,faehigkeitenNode,vorteileNode,andereEigenschaftenNode,
-                wegNode,willenskraftNode,blutvorratNode,gesundheitNode,clansschwaecheNode
+                wegNode,willenskraftNode,blutvorratNode,gesundheitNode,clansschwaecheNode,buttonField
         );
 //        stage.widthProperty().addListener((observable, oldValue, newValue) -> System.out.println("Breite: "+newValue));
 //        stage.heightProperty().addListener((observable, oldValue, newValue) -> System.out.println("Höhe: "+newValue));
@@ -87,6 +89,8 @@ public class Form {
 
     private HBox buttonField(){
         HBox hBox = new HBox();
+        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+        hBox.getChildren().add(buttonField.getButtonField());
         return hBox;
     }
 }
