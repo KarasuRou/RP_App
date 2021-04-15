@@ -21,11 +21,13 @@ public class TextCircle {
         hBox.getChildren().addAll(V1, V2);
     }
 
-    public void addRow(String designation, int CircleAmount, Boolean alreadyOneActive){
+    public CircleRow addRow(String designation, int CircleAmount, Boolean alreadyOneActive){
         Text text = new Text(designation);
         text.getStyleClass().add("normalText");
         V1.getChildren().add(text);
-        V2.getChildren().add(new CircleRow(CircleAmount,designation, alreadyOneActive).getCircleRow());
+        CircleRow circleRow = new CircleRow(CircleAmount,designation, alreadyOneActive);
+        V2.getChildren().add(circleRow.getCircleRow());
+        return circleRow;
     }
 
     public Node getTextCircle(){
