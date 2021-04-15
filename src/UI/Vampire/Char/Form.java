@@ -24,8 +24,10 @@ public class Form {
     private final static GesundheitNode gesundheitNode = new GesundheitNode();
     private final static ClansschwaecheNode clansschwaecheNode = new ClansschwaecheNode();
 
-    public Form(){
-        Stage primaryStage = new Stage();
+    public Form(Stage stage){
+        stage.setTitle("Vampire Char");
+        stage.setX(10);
+        stage.setY(10);
         VBox root = new VBox();
 
         HBox secondRoot = secondRoot();
@@ -33,15 +35,16 @@ public class Form {
         root.getChildren().addAll(menuBar.getMenueBar(), secondRoot);
 
 
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        Scene scene = new Scene(root,1763,788);
+        stage.setScene(scene);
+        stage.setResizable(false);
         scene.getStylesheets().add(Form.class.getResource("Style.css").toExternalForm());
-        primaryStage.show();
         charController.setNodes(
                 playerInfoNode,menuBar,attributeNode,faehigkeitenNode,vorteileNode,andereEigenschaftenNode,
                 wegNode,willenskraftNode,blutvorratNode,gesundheitNode,clansschwaecheNode
         );
+//        stage.widthProperty().addListener((observable, oldValue, newValue) -> System.out.println("Breite: "+newValue));
+//        stage.heightProperty().addListener((observable, oldValue, newValue) -> System.out.println("Höhe: "+newValue));
     }
 
     private HBox secondRoot(){

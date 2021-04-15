@@ -1,10 +1,8 @@
 package UI;
 
-import UI.Vampire.Char.Form;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import logic.Vampire.CharController;
 
 public class Main extends Application {
 
@@ -18,7 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage){
         if (i != 0) {
-            Form vampCharForm = new Form();
+            Main_Window mainWindow = new Main_Window();
         }
         else {
             Platform.exit();
