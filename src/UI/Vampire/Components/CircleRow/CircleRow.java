@@ -1,6 +1,8 @@
 package UI.Vampire.Components.CircleRow;
 
 import javafx.beans.property.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
@@ -24,6 +26,14 @@ public class CircleRow {
         circleRow = new Circle[this.circleAmount];
         initCircleRow(prefilledCircle);
         value.setValue(setValue(prefilledCircle));
+        value.addListener((observable, oldValue, newValue) -> {
+            int neuerValue = newValue.intValue() - 1;
+            for (int y = 0; y<= neuerValue; y++){
+                circleRow[y].setFill(FILLED);
+            }
+            for (int y=circleAmount-1;y>neuerValue;y--){
+                circleRow[y].setFill(UNFILLED);
+            }});
     }
 
     public Node getCircleRow() {
@@ -47,25 +57,23 @@ public class CircleRow {
                 circle.setFill(FILLED);
 
             int finalI = i;
-            circle.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    if (event.getButton().equals(MouseButton.PRIMARY)){
-                        value.setValue(finalI+1);
-                        for (int y = 0; y<= finalI; y++){
-                            circleRow[y].setFill(FILLED);
-                        }
-                        for (int y=circleAmount-1;y>finalI;y--){
-                            circleRow[y].setFill(UNFILLED);
-                        }
+            circle.setOnMouseClicked(event ->
+            {
+                if (event.getButton().equals(MouseButton.PRIMARY)){
+                    value.setValue(finalI+1);
+                    for (int y = 0; y<= finalI; y++){
+                        circleRow[y].setFill(FILLED);
                     }
-                    else if (event.getButton().equals(MouseButton.SECONDARY) &&
-                                finalI == 0 &&
-                                prefilledCircle.equals(PrefilledCircle.ZERO)){
-                        value.setValue(finalI);
-                        for (int y=circleAmount-1;y>=finalI;y--)
-                            circleRow[y].setFill(UNFILLED);
+                    for (int y=circleAmount-1;y>finalI;y--){
+                        circleRow[y].setFill(UNFILLED);
                     }
+                }
+                else if (event.getButton().equals(MouseButton.SECONDARY) &&
+                            finalI == 0 &&
+                            prefilledCircle.equals(PrefilledCircle.ZERO)){
+                    value.setValue(finalI);
+                    for (int y=circleAmount-1;y>=finalI;y--)
+                        circleRow[y].setFill(UNFILLED);
                 }
             });
             circleRow[i] = circle;
