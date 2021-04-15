@@ -1,4 +1,4 @@
-package logic;
+package UI;
 
 import UI.Vampire.Char.Form;
 import javafx.application.Application;

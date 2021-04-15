@@ -1,6 +1,7 @@
 package UI.Vampire.Char.Components;
 
-import UI.Vampire.Components.CircleRow;
+import UI.Vampire.Components.CircleRow.CircleRow;
+import UI.Vampire.Components.CircleRow.PrefilledCircle;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -11,7 +12,7 @@ import javafx.scene.layout.VBox;
 public class WegNode {
 
     private final VBox root = new VBox();
-    private static final CircleRow cR = new CircleRow(10,"WegWert",false);
+    private static final CircleRow cR = new CircleRow(10,"WegWert", PrefilledCircle.ZERO);
 
     public WegNode(){
         VBox vBox = new VBox();

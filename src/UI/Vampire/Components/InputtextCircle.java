@@ -1,5 +1,7 @@
 package UI.Vampire.Components;
 
+import UI.Vampire.Components.CircleRow.CircleRow;
+import UI.Vampire.Components.CircleRow.PrefilledCircle;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
@@ -19,11 +21,11 @@ public class InputtextCircle {
         root.setAlignment(Pos.CENTER);
     }
 
-    public void addRow(String designation, int CircleAmount, Boolean alreadyOneActive){
+    public void addRow(String designation, int CircleAmount, PrefilledCircle prefilledCircle){
         HBox V1 = new HBox();
         TextField textField = new TextField();
         V1.getChildren().add(textField);
-        V1.getChildren().add(new CircleRow(CircleAmount,designation,alreadyOneActive).getCircleRow());
+        V1.getChildren().add(new CircleRow(CircleAmount,designation,prefilledCircle).getCircleRow());
         hBox.getChildren().add(V1);
     }
 

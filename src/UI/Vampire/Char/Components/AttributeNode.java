@@ -1,6 +1,7 @@
 package UI.Vampire.Char.Components;
 
-import UI.Vampire.Components.CircleRow;
+import UI.Vampire.Components.CircleRow.CircleRow;
+import UI.Vampire.Components.CircleRow.PrefilledCircle;
 import UI.Vampire.Components.TextCircle;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -18,6 +19,7 @@ public class AttributeNode {
     private final TextCircle TC3 = new TextCircle("Geistig");
     private final CircleRow[] geistigCircleRow = new CircleRow[3];
     private final int CIRCLE_AMOUNT = 8;
+    private final static PrefilledCircle prefilledCircleONE = PrefilledCircle.ONE;
 
     public AttributeNode(){
         Label label = new Label("Attribute");
@@ -26,16 +28,16 @@ public class AttributeNode {
         hBox.getChildren().addAll(TC1.getTextCircle(), TC2.getTextCircle(), TC3.getTextCircle());
         root.setAlignment(Pos.CENTER);
         root.getChildren().addAll(label, hBox);
-        koerperlichCircleRow[0] = TC1.addRow("Körperkraft", CIRCLE_AMOUNT,true);
-        koerperlichCircleRow[1] = TC1.addRow("Geschick", CIRCLE_AMOUNT,true);
-        koerperlichCircleRow[2] = TC1.addRow("Widerstandsfähigkeit", CIRCLE_AMOUNT,true);
-        gesellschaftlichCircleRow[0] = TC2.addRow("Charisma", CIRCLE_AMOUNT,true);
-        gesellschaftlichCircleRow[1] = TC2.addRow("Manipulation", CIRCLE_AMOUNT,true);
-        gesellschaftlichCircleRow[2] = TC2.addRow("Erscheinungsbild", CIRCLE_AMOUNT,true);
+        koerperlichCircleRow[0] = TC1.addRow("Körperkraft", CIRCLE_AMOUNT, prefilledCircleONE);
+        koerperlichCircleRow[1] = TC1.addRow("Geschick", CIRCLE_AMOUNT,prefilledCircleONE);
+        koerperlichCircleRow[2] = TC1.addRow("Widerstandsfähigkeit", CIRCLE_AMOUNT,prefilledCircleONE);
+        gesellschaftlichCircleRow[0] = TC2.addRow("Charisma", CIRCLE_AMOUNT,prefilledCircleONE);
+        gesellschaftlichCircleRow[1] = TC2.addRow("Manipulation", CIRCLE_AMOUNT,prefilledCircleONE);
+        gesellschaftlichCircleRow[2] = TC2.addRow("Erscheinungsbild", CIRCLE_AMOUNT,prefilledCircleONE);
         TC2.addNewStyle("middleRow");
-        geistigCircleRow[0] = TC3.addRow("Wahrnehmung", CIRCLE_AMOUNT,true);
-        geistigCircleRow[1] = TC3.addRow("Intelligenz", CIRCLE_AMOUNT,true);
-        geistigCircleRow[2] = TC3.addRow("Geistesschärfe", CIRCLE_AMOUNT,true);
+        geistigCircleRow[0] = TC3.addRow("Wahrnehmung", CIRCLE_AMOUNT,prefilledCircleONE);
+        geistigCircleRow[1] = TC3.addRow("Intelligenz", CIRCLE_AMOUNT,prefilledCircleONE);
+        geistigCircleRow[2] = TC3.addRow("Geistesschärfe", CIRCLE_AMOUNT,prefilledCircleONE);
     }
 
     public Node getFaehigkeitenNode(){

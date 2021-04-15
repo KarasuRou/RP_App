@@ -1,5 +1,6 @@
 package UI.Vampire.Char.Components;
 
+import UI.Vampire.Components.CircleRow.PrefilledCircle;
 import UI.Vampire.Components.InputtextCircle;
 import UI.Vampire.Components.TextCircle;
 import javafx.geometry.Pos;
@@ -16,6 +17,8 @@ public class VorteileNode {
     private final TextCircle TC1 = new TextCircle("Tugenden");
     private final int CIRCLE_AMOUNT = 8;
     private final int CIRCLE_AMOUNT_TUGENDEN = 5;
+    private final static PrefilledCircle prefilledCircleONE = PrefilledCircle.ONE;
+    private final static PrefilledCircle prefilledCircleZERO = PrefilledCircle.ZERO;
 
     public VorteileNode(){
         Label label = new Label("Fähigkeiten");
@@ -25,24 +28,24 @@ public class VorteileNode {
         root.setAlignment(Pos.CENTER);
         root.getChildren().addAll(label, hBox);
 
-        IC1.addRow("",CIRCLE_AMOUNT,false);
-        IC1.addRow("",CIRCLE_AMOUNT,false);
-        IC1.addRow("",CIRCLE_AMOUNT,false);
-        IC1.addRow("",CIRCLE_AMOUNT,false);
-        IC1.addRow("",CIRCLE_AMOUNT,false);
+        IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
         IC1.addNewStyle("vampireTextField");
 
-        IC2.addRow("",CIRCLE_AMOUNT,false);
-        IC2.addRow("",CIRCLE_AMOUNT,false);
-        IC2.addRow("",CIRCLE_AMOUNT,false);
-        IC2.addRow("",CIRCLE_AMOUNT,false);
-        IC2.addRow("",CIRCLE_AMOUNT,false);
+        IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
         IC2.addNewStyle("vampireTextField");
         IC2.addNewStyle("middleRow");
 
-        TC1.addRow("Gewissen/Überzeugung",CIRCLE_AMOUNT_TUGENDEN,true);
-        TC1.addRow("Selbstbeherrschung/Instinkt",CIRCLE_AMOUNT_TUGENDEN,true);
-        TC1.addRow("Mut",CIRCLE_AMOUNT_TUGENDEN,true);
+        TC1.addRow("Gewissen/Überzeugung",CIRCLE_AMOUNT_TUGENDEN,prefilledCircleONE);
+        TC1.addRow("Selbstbeherrschung/Instinkt",CIRCLE_AMOUNT_TUGENDEN,prefilledCircleONE);
+        TC1.addRow("Mut",CIRCLE_AMOUNT_TUGENDEN,prefilledCircleONE);
     }
 
     public Node getVorteileNode(){

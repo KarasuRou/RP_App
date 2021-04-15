@@ -1,7 +1,5 @@
 package data;
 
-import logic.dbConnection;
-
 import java.sql.ResultSet;
 
 public class Vamp_CharData {

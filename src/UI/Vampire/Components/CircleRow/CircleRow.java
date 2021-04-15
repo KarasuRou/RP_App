@@ -1,4 +1,4 @@
-package UI.Vampire.Components;
+package UI.Vampire.Components.CircleRow;
 
 import javafx.beans.property.*;
 import javafx.event.EventHandler;
@@ -18,28 +18,32 @@ public class CircleRow {
     private final Color UNFILLED = Color.WHITE;
     private final IntegerProperty value = new SimpleIntegerProperty(0);
 
-    public CircleRow(int circleAmount, String bezeichnung, Boolean alreadyOneActive) {
+    public CircleRow(int circleAmount, String bezeichnung, PrefilledCircle prefilledCircle) {
         this.circleAmount = circleAmount;
         this.bezeichnung = bezeichnung;
         circleRow = new Circle[this.circleAmount];
-        initCircleRow(alreadyOneActive);
-        value.setValue(setValue(alreadyOneActive));
-    }
-    private int setValue(Boolean alreadyOneActive){
-        if (alreadyOneActive)
-            return 1;
-        else
-            return 0;
+        initCircleRow(prefilledCircle);
+        value.setValue(setValue(prefilledCircle));
     }
 
-    private void initCircleRow(Boolean alreadyOneActive){
+    public Node getCircleRow() {
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(circleRow);
+        return hBox;
+    }
+
+    public IntegerProperty getValue(){
+        return value;
+    }
+
+    private void initCircleRow(PrefilledCircle prefilledCircle){
         for (int i = 0; i < circleAmount; i++) {
             Circle circle = new Circle();
             circle.setRadius(10);
             circle.setStroke(Color.BLACK);
             circle.setStrokeWidth(1);
             circle.setFill(UNFILLED);
-            if (i==0 && alreadyOneActive)
+            if (i==0 && prefilledCircle.equals(PrefilledCircle.ONE))
                 circle.setFill(FILLED);
 
             int finalI = i;
@@ -55,7 +59,9 @@ public class CircleRow {
                             circleRow[y].setFill(UNFILLED);
                         }
                     }
-                    else if (event.getButton().equals(MouseButton.SECONDARY) && finalI == 0 && !alreadyOneActive){
+                    else if (event.getButton().equals(MouseButton.SECONDARY) &&
+                                finalI == 0 &&
+                                prefilledCircle.equals(PrefilledCircle.ZERO)){
                         value.setValue(finalI);
                         for (int y=circleAmount-1;y>=finalI;y--)
                             circleRow[y].setFill(UNFILLED);
@@ -66,13 +72,10 @@ public class CircleRow {
         }
     }
 
-    public Node getCircleRow() {
-        HBox hBox = new HBox();
-        hBox.getChildren().addAll(circleRow);
-        return hBox;
-    }
-
-    public IntegerProperty getValue(){
-        return value;
+    private int setValue(PrefilledCircle prefilledCircle){
+        if (prefilledCircle.equals(PrefilledCircle.ONE))
+            return 1;
+        else
+            return 0;
     }
 }
