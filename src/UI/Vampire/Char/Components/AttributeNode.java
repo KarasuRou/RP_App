@@ -47,14 +47,12 @@ public class AttributeNode {
     public void setGesellschaftlich(int[] attributeGesellschaftlich) {
         for(int i = 0; i<attributeGesellschaftlich.length;i++) {
             gesellschaftlichCircleRow[i].getValue().setValue(attributeGesellschaftlich[i]);
-            System.out.println(attributeGesellschaftlich[i]);
         }
     }
 
     public void setGeistig(int[] attributeGeistig) {
         for(int i = 0; i<attributeGeistig.length;i++) {
             geistigCircleRow[i].getValue().setValue(attributeGeistig[i]);
-            System.out.println(attributeGeistig[i]);
         }
 
     }
@@ -62,7 +60,6 @@ public class AttributeNode {
     public void setKoerperlich(int[] attributeKoerperlich) {
         for(int i = 0; i<attributeKoerperlich.length;i++) {
             koerperlichCircleRow[i].getValue().setValue(attributeKoerperlich[i]);
-            System.out.println(attributeKoerperlich[i]);
         }
     }
 }

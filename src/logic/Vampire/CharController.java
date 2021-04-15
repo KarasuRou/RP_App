@@ -123,7 +123,7 @@ public class CharController {
         int[] attributeKoerperlich = new int[lastRow];
         resultSet.first();
         for(i = 0;i<lastRow;i++){
-            attributeKoerperlich[i] = resultSet.getInt("value");System.out.println(i + ": " + resultSet.getInt("value"));
+            attributeKoerperlich[i] = resultSet.getInt("value");
             resultSet.next();
         }vampChar.setAttributeKoerperlich(attributeKoerperlich);
 
