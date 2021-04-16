@@ -21,7 +21,7 @@ public class VorteileNode {
     private final static PrefilledCircle prefilledCircleZERO = PrefilledCircle.ZERO;
 
     public VorteileNode(){
-        Label label = new Label("Fähigkeiten");
+        Label label = new Label("Vorteile");
         label.getStyleClass().add("H1");
         HBox hBox = new HBox();
         hBox.getChildren().addAll(IC1.getInputtextCircle(), IC2.getInputtextCircle(), TC1.getTextCircle());
