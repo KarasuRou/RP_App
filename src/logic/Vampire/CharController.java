@@ -307,6 +307,7 @@ public class CharController {
         this.buttonField = buttonField;
         setCreateNewCharButtonEvent();
         setUpdateVampCharButtonEvent();
+        buttonField.enableCreateNewCharButton();
         setCharMenue();
     }
     private void setCharMenue(){
@@ -325,6 +326,8 @@ public class CharController {
     }
 
     public void setVampChar(int id){
+        if (id == 0){buttonField.enableCreateNewCharButton();}
+        else {buttonField.disableCreateNewCharButton();}
         try {
             displayTemplate(id);
             Vamp_Char vampChar;

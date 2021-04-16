@@ -15,7 +15,6 @@ public class ButtonField {
 
     public ButtonField(){
         root.setAlignment(Pos.BOTTOM_RIGHT);
-        root.getChildren().addAll(createChar, updateChar);
     }
 
     public Node getButtonField(){
@@ -30,6 +29,16 @@ public class ButtonField {
         updateChar.setOnMouseClicked(event);
     }
 
-
-    // disable create Char button when id is given
+    public void disableCreateNewCharButton(){
+        if (root.getChildren().contains(createChar)) {
+            root.getChildren().remove(createChar);
+            root.getChildren().add(updateChar);
+        }
+    }
+    public void enableCreateNewCharButton(){
+        if (!root.getChildren().contains(createChar)) {
+            root.getChildren().add(createChar);
+            root.getChildren().remove(updateChar);
+        }
+    }
 }
