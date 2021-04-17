@@ -23,6 +23,7 @@ public class BlutvorratNode {
 
     }
 
-    public void setBlutvorrat(int blutvorrat) { //TODO
+    public void setBlutvorrat(int blutvorrat) {
+        rR.getValue().setValue(blutvorrat);
     }
 }
