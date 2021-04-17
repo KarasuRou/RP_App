@@ -2,6 +2,7 @@ package UI.Vampire.Components;
 
 import UI.Vampire.Components.CircleRow.CircleRow;
 import UI.Vampire.Components.CircleRow.PrefilledCircle;
+import javafx.beans.property.Property;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
@@ -21,12 +22,18 @@ public class InputtextCircle {
         root.setAlignment(Pos.CENTER);
     }
 
-    public void addRow(String designation, int CircleAmount, PrefilledCircle prefilledCircle){
+    public Property[] addRow(String designation, int CircleAmount, PrefilledCircle prefilledCircle){
         HBox V1 = new HBox();
         TextField textField = new TextField();
+        CircleRow circleRow = new CircleRow(CircleAmount,designation,prefilledCircle);
         V1.getChildren().add(textField);
-        V1.getChildren().add(new CircleRow(CircleAmount,designation,prefilledCircle).getCircleRow());
+        V1.getChildren().add(circleRow.getCircleRow());
         hBox.getChildren().add(V1);
+
+        Property[] properties = new Property[2];
+        properties[0] = circleRow.getValue();
+        properties[1] = textField.textProperty();
+        return properties;
     }
 
     public Node getInputtextCircle(){
