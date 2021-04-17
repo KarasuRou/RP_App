@@ -26,6 +26,15 @@ public class RectangleColumn {
         rectangleColumn = new Rectangle[this.rectangleAmount];
         initRectangleColumn(alreadyOneActive);
         value.setValue(setValue(alreadyOneActive));
+        value.addListener((observable, oldValue, newValue) -> {
+            int neuerValue = newValue.intValue() - 1;
+            for (int i = 0; i <= neuerValue; i++) {
+                rectangleColumn[i].setFill(FILLED);
+            }
+            for (int i = rectangleAmount - 1; i > neuerValue; i--) {
+                rectangleColumn[i].setFill(UNFILLED);
+            }
+        });
     }
     private int setValue(Boolean alreadyOneActive){
         if (alreadyOneActive)
@@ -46,23 +55,20 @@ public class RectangleColumn {
                 rectangle.setFill(FILLED);
 
             int finalI = i;
-            rectangle.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    if (event.getButton().equals(MouseButton.PRIMARY)){
-                        value.setValue(finalI+1);
-                        for (int y = 0; y<= finalI; y++){
-                            rectangleColumn[y].setFill(FILLED);
-                        }
-                        for (int y=rectangleAmount-1;y>finalI;y--){
-                            rectangleColumn[y].setFill(UNFILLED);
-                        }
+            rectangle.setOnMouseClicked(event -> {
+                if (event.getButton().equals(MouseButton.PRIMARY)){
+                    value.setValue(finalI+1);
+                    for (int y = 0; y<= finalI; y++){
+                        rectangleColumn[y].setFill(FILLED);
                     }
-                    else if (event.getButton().equals(MouseButton.SECONDARY) && finalI == 0 && !alreadyOneActive){
-                        value.setValue(finalI);
-                        for (int y=rectangleAmount-1;y>=finalI;y--)
-                            rectangleColumn[y].setFill(UNFILLED);
+                    for (int y=rectangleAmount-1;y>finalI;y--){
+                        rectangleColumn[y].setFill(UNFILLED);
                     }
+                }
+                else if (event.getButton().equals(MouseButton.SECONDARY) && finalI == 0 && !alreadyOneActive){
+                    value.setValue(finalI);
+                    for (int y=rectangleAmount-1;y>=finalI;y--)
+                        rectangleColumn[y].setFill(UNFILLED);
                 }
             });
             rectangleColumn[finalI] = rectangle;

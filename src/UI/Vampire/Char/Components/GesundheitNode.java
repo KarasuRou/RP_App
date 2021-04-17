@@ -95,6 +95,7 @@ public class GesundheitNode {
         return root;
     }
 
-    public void setGesundheit(int gesundheit, int gesundheit2) { //TODO
+    public void setGesundheit(int gesundheit, int gesundheit2) {
+        rC.getValue().setValue(gesundheit);
     }
 }
