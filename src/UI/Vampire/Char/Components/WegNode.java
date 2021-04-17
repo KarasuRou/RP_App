@@ -63,4 +63,20 @@ public class WegNode {
     public void setAura(String aura) {
         auraBezeichnung.setText(aura);
     }
+
+    public boolean getAuraAnzeigenProperty() {
+        return true; // TODO: Aura Anzeigen Property ; Handler hinzufügen
+    }
+
+    public String getAuraProperty() {
+        return auraBezeichnung.getText();
+    }
+
+    public int getWegWertProperty() {
+        return cR.getValue().get();
+    }
+
+    public String getWegBezeichnungProperty() {
+        return wegBezeichnung.getText();
+    }
 }

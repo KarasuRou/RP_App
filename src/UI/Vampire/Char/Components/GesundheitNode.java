@@ -98,4 +98,8 @@ public class GesundheitNode {
     public void setGesundheit(int gesundheit, int gesundheit2) {
         rC.getValue().setValue(gesundheit);
     }
+
+    public int getGesundheitProperty() {
+        return rC.getValue().get();
+    }
 }

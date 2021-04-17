@@ -101,4 +101,5 @@ public class PlayerInfoNode {
     public void setErfahrung(int erfahrung){
         this.erfahrung.setValue(String.valueOf(erfahrung));
     }
+
 }

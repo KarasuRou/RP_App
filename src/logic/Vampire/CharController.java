@@ -389,11 +389,51 @@ public class CharController {
 
 
     public void updateVampChar(int id){
+
         System.out.println("UPDATE");
+
+    }
+
+    public Vamp_Char getCurrentVampChar(){
+        Vamp_Char vamp_char = new Vamp_Char(id);
+        vamp_char.setCharName(playerInfoNode.getCharNameProperty().getValue().toString());
+        vamp_char.setSpieler(playerInfoNode.getSpielerProperty().getValue().toString());
+        vamp_char.setWesen(playerInfoNode.getWesenProperty().getValue().toString());
+        vamp_char.setVerhalten(playerInfoNode.getVerhaltenProperty().getValue().toString());
+        vamp_char.setClan(playerInfoNode.getClanProperty().getValue().toString());
+        vamp_char.setGeneration(Integer.parseInt(playerInfoNode.getGenerationProperty().getValue().toString()));
+        vamp_char.setZuflucht(playerInfoNode.getZufluchtProperty().getValue().toString());
+        vamp_char.setErfahrung(Integer.parseInt(playerInfoNode.getErfahrungProperty().getValue().toString()));
+        vamp_char.setAttributeGeistig(attributeNode.getGeistigProperty());
+        vamp_char.setAttributeGesellschaftlich(attributeNode.getGesellschaftlichProperty());
+        vamp_char.setAttributeKoerperlich(attributeNode.getKoerperlichProperty());
+        vamp_char.setFaehigkeitenFertigkeiten(faehigkeitenNode.getFertigkeitenProperty());
+        vamp_char.setFaehigkeitenKenntnisse(faehigkeitenNode.getKenntnisseProperty());
+        vamp_char.setFaehigkeitenTalente(faehigkeitenNode.getTalenteProperty());
+        vamp_char.setVorteileDisziplinenBezeichnung(vorteileNode.getDisziplinenBezeichnungProperty());
+        vamp_char.setVorteileDisziplinenWert(vorteileNode.getDisziplinenWertProperty());
+        vamp_char.setVorteileHintergrundWert(vorteileNode.getHintergrundWertProperty());
+        vamp_char.setVorteileHintergrundBezeichnung(vorteileNode.getHintergrundBezeichnungProperty());
+        vamp_char.setVorteileTugenden(vorteileNode.getTugendenProperty());
+        vamp_char.setVorteileTugendenEntscheidung(vorteileNode.getTugendenEntscheidungProperty());
+        vamp_char.setAndereEigenschaftenBezeichnung(andereEigenschaftenNode.getAndereEigenschaftenBezeichnungProperty());
+        vamp_char.setAndereEigenschaftenWert(andereEigenschaftenNode.getAndereEigenschaftenWertProperty());
+        vamp_char.setWeg(wegNode.getWegBezeichnungProperty());
+        vamp_char.setWegWert(wegNode.getWegWertProperty());
+        vamp_char.setAura(wegNode.getAuraProperty());
+        vamp_char.setAuraAnzeigen(wegNode.getAuraAnzeigenProperty());
+        vamp_char.setWillenskraft(willenskraftNode.getWillenskraftProperty());
+        vamp_char.setWillenskraftPool(willenskraftNode.getWillenskraftPoolProperty());
+        vamp_char.setBlutvorrat(blutvorratNode.getBlutvorratProperty());
+        vamp_char.setGesundheit(gesundheitNode.getGesundheitProperty());
+//        vamp_char.setGesundheit2(gesundheitNode.getGesundheit());
+        vamp_char.setClansschweache(clansschwaecheNode.getClansschwaeche());
+        return vamp_char;
     }
 
     public int createNewVampChar(){
-        System.out.println("CREATE NEW");
+        Vamp_Char vamp_char = getCurrentVampChar();
+        buttonField.disableCreateNewCharButton();
         return 0;
     }
 

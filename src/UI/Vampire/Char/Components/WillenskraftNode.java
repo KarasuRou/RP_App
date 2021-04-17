@@ -12,7 +12,7 @@ public class WillenskraftNode {
 
     private final VBox root = new VBox();
     private final static CircleRow cR = new CircleRow(10,"Willenskraft", PrefilledCircle.ZERO);
-    private final static RectangleRow rR = new RectangleRow(10,"Willenskraft",false,1);
+    private final static RectangleRow rR = new RectangleRow(10,"WillenskraftPool",false,1);
 
     public WillenskraftNode(){
         root.setAlignment(Pos.CENTER);
@@ -28,5 +28,13 @@ public class WillenskraftNode {
     public void setWillenskraft(int willenskraft, int willenskraftPool) {
         cR.getValue().setValue(willenskraft);
         rR.getValue().setValue(willenskraftPool);
+    }
+
+    public int getWillenskraftPoolProperty() {
+        return rR.getValue().get();
+    }
+
+    public int getWillenskraftProperty() {
+        return cR.getValue().get();
     }
 }

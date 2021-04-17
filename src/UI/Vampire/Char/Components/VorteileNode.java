@@ -105,4 +105,28 @@ public class VorteileNode {
             }
         }
     }
+
+    public String[] getDisziplinenBezeichnungProperty() { //TODO
+        return null;
+    }
+
+    public int[] getDisziplinenWertProperty() { //TODO
+        return null;
+    }
+
+    public boolean[] getTugendenEntscheidungProperty() { //TODO
+        return null;
+    }
+
+    public int[] getTugendenProperty() { //TODO
+        return null;
+    }
+
+    public String[] getHintergrundBezeichnungProperty() { //TODO
+        return null;
+    }
+
+    public int[] getHintergrundWertProperty() { //TODO
+        return null;
+    }
 }

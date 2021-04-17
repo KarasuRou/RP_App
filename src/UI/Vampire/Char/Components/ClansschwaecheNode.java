@@ -31,4 +31,8 @@ public class ClansschwaecheNode {
         if (clansschweache.length == 1)
             clansschwaecheTextProperty.setValue(clansschweache);
     }
+
+    public String[] getClansschwaeche() { //TODO
+        return null;
+    }
 }

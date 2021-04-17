@@ -92,4 +92,28 @@ public class FaehigkeitenNode {
             talenteCircleRow[i].getValue().setValue(faehigkeitenTalente[i]);
         }
     }
+
+    public int[] getFertigkeitenProperty() {
+        int[] faehigkeitenFertigkeiten = new int[10];
+        for (int i = 0; i < fertigkeitenCircleRow.length; i++) {
+            faehigkeitenFertigkeiten[i] = fertigkeitenCircleRow[i].getValue().get();
+        }
+        return faehigkeitenFertigkeiten;
+    }
+
+    public int[] getKenntnisseProperty() {
+        int[] faehigkeitenKenntnisse = new int[10];
+        for (int i = 0; i < kenntnisseCircleRow.length; i++) {
+            faehigkeitenKenntnisse[i] = kenntnisseCircleRow[i].getValue().get();
+        }
+        return faehigkeitenKenntnisse;
+    }
+
+    public int[] getTalenteProperty() {
+        int[] faehigkeitenTalente = new int[10];
+        for (int i = 0; i < talenteCircleRow.length; i++) {
+            faehigkeitenTalente[i] = talenteCircleRow[i].getValue().get();
+        }
+        return faehigkeitenTalente;
+    }
 }

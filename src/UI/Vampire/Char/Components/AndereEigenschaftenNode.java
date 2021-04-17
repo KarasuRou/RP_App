@@ -39,4 +39,20 @@ public class AndereEigenschaftenNode {
             andereEigenschaftenProperty[i][0].setValue(andereEigenschaftenBezeichnung[i]);
         }
     }
+
+    public String[] getAndereEigenschaftenBezeichnungProperty() {
+        String[] andereEigenschaftenBezeichnung = new String[andereEigenschaftenProperty.length];
+        for (int i=0;i< andereEigenschaftenProperty.length;i++){
+           andereEigenschaftenBezeichnung[i] = andereEigenschaftenProperty[i][1].getValue().toString();
+        }
+        return andereEigenschaftenBezeichnung;
+    }
+
+    public int[] getAndereEigenschaftenWertProperty() {
+        int[] andereEigenschaftenWert = new int[andereEigenschaftenProperty.length];
+        for (int i = 0; i < andereEigenschaftenWert.length; i++) {
+            andereEigenschaftenWert[i] = Integer.parseInt(andereEigenschaftenProperty[i][0].getValue().toString());
+        }
+        return andereEigenschaftenWert;
+    }
 }

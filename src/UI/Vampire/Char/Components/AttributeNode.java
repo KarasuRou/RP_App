@@ -62,4 +62,28 @@ public class AttributeNode {
             koerperlichCircleRow[i].getValue().setValue(attributeKoerperlich[i]);
         }
     }
+
+    public int[] getGeistigProperty() {
+        int[] attributeGeistig = new int[3];
+        for (int i = 0; i < koerperlichCircleRow.length; i++) {
+            attributeGeistig[i] = koerperlichCircleRow[i].getValue().get();
+        }
+        return attributeGeistig;
+    }
+
+    public int[] getGesellschaftlichProperty() {
+        int[] attributeGesellschaftlich = new int[3];
+        for (int i = 0; i < gesellschaftlichCircleRow.length; i++) {
+            attributeGesellschaftlich[i] = gesellschaftlichCircleRow[i].getValue().get();
+        }
+        return attributeGesellschaftlich;
+    }
+
+    public int[] getKoerperlichProperty() {
+        int[] attributeKoerperlich = new int[3];
+        for (int i = 0; i < koerperlichCircleRow.length; i++) {
+            attributeKoerperlich[i] = koerperlichCircleRow[i].getValue().get();
+        }
+        return attributeKoerperlich;
+    }
 }
