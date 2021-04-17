@@ -351,6 +351,7 @@ public class CharController {
             vorteileNode.setTugenden(vampChar.getVorteileTugendenEntscheidung(), vampChar.getVorteileTugenden());
             andereEigenschaftenNode.setAndereEigenschaften(vampChar.getAndereEigenschaftenBezeichnung(), vampChar.getAndereEigenschaftenWert());
             wegNode.setWeg(vampChar.getWeg(),vampChar.getWegWert());
+            wegNode.setAura(vampChar.getAura());
             willenskraftNode.setWillenskraft(vampChar.getWillenskraft(), vampChar.getWillenskraftPool());
             blutvorratNode.setBlutvorrat(vampChar.getBlutvorrat());
             gesundheitNode.setGesundheit(vampChar.getGesundheit(),vampChar.getGesundheit2());

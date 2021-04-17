@@ -13,12 +13,13 @@ public class WegNode {
 
     private final VBox root = new VBox();
     private static final CircleRow cR = new CircleRow(10,"WegWert", PrefilledCircle.ZERO);
+    private final TextField wegBezeichnung = new TextField();
+    private final TextField auraBezeichnung = new TextField();
 
     public WegNode(){
         VBox vBox = new VBox();
         Label label = new Label("Weg");
         label.getStyleClass().add("H2");
-        TextField wegBezeichnung = new TextField();
         wegBezeichnung.setMinWidth(root.getWidth());
 
         vBox.setAlignment(Pos.CENTER);
@@ -33,8 +34,7 @@ public class WegNode {
         HBox AuraWert = new HBox();
         hBox.maxWidthProperty().bind(root.widthProperty());
         Label label = new Label("Aura:");
-        TextField textField = new TextField();
-        AuraBezeichnung.getChildren().addAll(label, textField);
+        AuraBezeichnung.getChildren().addAll(label, auraBezeichnung);
         AuraBezeichnung.getStyleClass().addAll("auraBezeichnung","normalText","vampireTextField");
         AuraWert.getStyleClass().addAll("transparentTextField","normalText");
 
@@ -56,6 +56,11 @@ public class WegNode {
         return root;
     }
 
-    public void setWeg(String weg, int wegWert) { //TODO
+    public void setWeg(String weg, int wegWert) {
+        wegBezeichnung.setText(weg);
+        cR.getValue().setValue(wegWert);
+    }
+    public void setAura(String aura) {
+        auraBezeichnung.setText(aura);
     }
 }
