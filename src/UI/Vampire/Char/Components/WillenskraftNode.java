@@ -25,6 +25,8 @@ public class WillenskraftNode {
         return root;
     }
 
-    public void setWillenskraft(int willenskraft, int willenskraftPool) { //TODO
+    public void setWillenskraft(int willenskraft, int willenskraftPool) {
+        cR.getValue().setValue(willenskraft);
+        rR.getValue().setValue(willenskraftPool);
     }
 }

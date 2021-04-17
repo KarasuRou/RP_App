@@ -37,7 +37,7 @@ public class Form {
         root.getChildren().addAll(menuBar.getMenueBar(), secondRoot);
 
 
-        Scene scene = new Scene(root,1763,788);
+        Scene scene = new Scene(root,1850,800);
         stage.setScene(scene);
         stage.setResizable(false);
         scene.getStylesheets().add(Form.class.getResource("Style.css").toExternalForm());
