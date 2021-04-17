@@ -84,7 +84,7 @@ public class VorteileNode {
 
     public String[] getDisziplinenBezeichnungProperty() {
         String[] disziplinenBezeichnung = new String[5];
-        for (int i = 0; i < disziplinProperty.length; i++){
+        for (int i = 0; i < 5; i++){
             disziplinenBezeichnung[i] = disziplinProperty[i][1].getValue().toString();
         }
         return disziplinenBezeichnung;
@@ -92,19 +92,19 @@ public class VorteileNode {
 
     public int[] getDisziplinenWertProperty() {
         int[] disziplinenWert = new int[5];
-        for (int i = 0; i < disziplinProperty.length; i++){
+        for (int i = 0; i < 5; i++){
             disziplinenWert[i] = Integer.parseInt(disziplinProperty[i][0].getValue().toString());
         }
         return disziplinenWert;
     }
 
     public boolean[] getTugendenEntscheidungProperty() { //TODO Vorteile-Tugenden-Entscheidung
-        return null;
+        return new boolean[]{false,false,false};
     }
 
     public int[] getTugendenProperty() {
         int[] tugendenProperty = new int[3];
-        for (int i = 0; i < tugendenCircleRow.length; i++) {
+        for (int i = 0; i < 3; i++) {
             tugendenProperty[i] = tugendenCircleRow[i].getValue().get();
         }
         return tugendenProperty;
@@ -112,15 +112,15 @@ public class VorteileNode {
 
     public String[] getHintergrundBezeichnungProperty() {
         String[] hintergrundBezeichnung = new String[5];
-        for (int i = 0; i < hintergrundProperty.length; i++){
+        for (int i = 0; i < 5; i++){
             hintergrundBezeichnung[i] = hintergrundProperty[i][1].getValue().toString();
         }
         return hintergrundBezeichnung;
     }
 
     public int[] getHintergrundWertProperty() {
-        int[] hintergrundWert = new int[3];
-        for (int i = 0; i < hintergrundProperty.length; i++) {
+        int[] hintergrundWert = new int[5];
+        for (int i = 0; i < 5; i++) {
             hintergrundWert[i] = Integer.parseInt(hintergrundProperty[i][0].getValue().toString());
         }
         return hintergrundWert;
