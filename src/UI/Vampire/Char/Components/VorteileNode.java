@@ -15,11 +15,9 @@ public class VorteileNode {
 
     private final VBox root = new VBox();
     private static final InputtextCircle IC1 = new InputtextCircle("Disziplinen");
-    private final Property[] disziplinCircleRowProperty = new Property[5];
-    private final Property[] disziplinProperty = new Property[5];
+    private final Property[][] disziplinProperty = new Property[5][2];
     private static final InputtextCircle IC2 = new InputtextCircle("Hintergrund");
-    private final Property[] hintergrundCircleRowProperty = new Property[5];
-    private final Property[] hintergrundProperty = new Property[5];
+    private final Property[][] hintergrundProperty = new Property[5][2];
     private static final TextCircle TC1 = new TextCircle("Tugenden");
     private final CircleRow[] tugendenCircleRow = new CircleRow[3];
     private final int CIRCLE_AMOUNT = 8;
@@ -34,41 +32,19 @@ public class VorteileNode {
         hBox.getChildren().addAll(IC1.getInputtextCircle(), IC2.getInputtextCircle(), TC1.getTextCircle());
         root.setAlignment(Pos.CENTER);
         root.getChildren().addAll(label, hBox);
-        Property[] properties;
 
-        properties= IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        System.out.println(properties.length);
-        disziplinCircleRowProperty[0] = properties[0];
-        disziplinProperty[0] = properties[1];
-        properties = IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        disziplinCircleRowProperty[1] = properties[0];
-        disziplinProperty[1] = properties[1];
-        properties = IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        disziplinCircleRowProperty[2] = properties[0];
-        disziplinProperty[2] = properties[1];
-        properties = IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        disziplinCircleRowProperty[3] = properties[0];
-        disziplinProperty[3] = properties[1];
-        properties = IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        disziplinCircleRowProperty[4] = properties[0];
-        disziplinProperty[4] = properties[1];
+        disziplinProperty[0] = IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        disziplinProperty[1] = IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        disziplinProperty[2] = IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        disziplinProperty[3] = IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        disziplinProperty[4] = IC1.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
         IC1.addNewStyle("vampireTextField");
 
-        properties = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        hintergrundCircleRowProperty[0] = properties[0];
-        hintergrundProperty[0] = properties[1];
-        properties = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        hintergrundCircleRowProperty[1] = properties[0];
-        hintergrundProperty[1] = properties[1];
-        properties = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        hintergrundCircleRowProperty[2] = properties[0];
-        hintergrundProperty[2] = properties[1];
-        properties = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        hintergrundCircleRowProperty[3] = properties[0];
-        hintergrundProperty[3] = properties[1];
-        properties = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
-        hintergrundCircleRowProperty[4] = properties[0];
-        hintergrundProperty[4] = properties[1];
+        hintergrundProperty[0] = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        hintergrundProperty[1] = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        hintergrundProperty[2] = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        hintergrundProperty[3] = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
+        hintergrundProperty[4] = IC2.addRow("",CIRCLE_AMOUNT,prefilledCircleZERO);
         IC2.addNewStyle("vampireTextField");
         IC2.addNewStyle("middleRow");
 
@@ -83,15 +59,15 @@ public class VorteileNode {
 
     public void setDisziplinen(String[] vorteileDisziplinenBezeichnung, int[] vorteileDisziplinenWert) {
         for (int i = 0; i < vorteileDisziplinenBezeichnung.length; i++) {
-            disziplinCircleRowProperty[i].setValue(vorteileDisziplinenWert[i]);
-            disziplinProperty[i].setValue(vorteileDisziplinenBezeichnung[i]);
+            disziplinProperty[i][0].setValue(vorteileDisziplinenWert[i]);
+            disziplinProperty[i][1].setValue(vorteileDisziplinenBezeichnung[i]);
         }
     }
 
     public void setHintergrund(String[] vorteileHintergrundBezeichnung, int[] vorteileHintergrundWert) {
         for (int i = 0; i < vorteileHintergrundBezeichnung.length; i++) {
-            hintergrundCircleRowProperty[i].setValue(vorteileHintergrundWert[i]);
-            hintergrundProperty[i].setValue(vorteileHintergrundBezeichnung[i]);
+            hintergrundProperty[i][0].setValue(vorteileHintergrundWert[i]);
+            hintergrundProperty[i][1].setValue(vorteileHintergrundBezeichnung[i]);
         }
     }
 
@@ -106,27 +82,47 @@ public class VorteileNode {
         }
     }
 
-    public String[] getDisziplinenBezeichnungProperty() { //TODO
+    public String[] getDisziplinenBezeichnungProperty() {
+        String[] disziplinenBezeichnung = new String[5];
+        for (int i = 0; i < disziplinProperty.length; i++){
+            disziplinenBezeichnung[i] = disziplinProperty[i][1].getValue().toString();
+        }
+        return disziplinenBezeichnung;
+    }
+
+    public int[] getDisziplinenWertProperty() {
+        int[] disziplinenWert = new int[5];
+        for (int i = 0; i < disziplinProperty.length; i++){
+            disziplinenWert[i] = Integer.parseInt(disziplinProperty[i][0].getValue().toString());
+        }
+        return disziplinenWert;
+    }
+
+    public boolean[] getTugendenEntscheidungProperty() { //TODO Vorteile-Tugenden-Entscheidung
         return null;
     }
 
-    public int[] getDisziplinenWertProperty() { //TODO
-        return null;
+    public int[] getTugendenProperty() {
+        int[] tugendenProperty = new int[3];
+        for (int i = 0; i < tugendenCircleRow.length; i++) {
+            tugendenProperty[i] = tugendenCircleRow[i].getValue().get();
+        }
+        return tugendenProperty;
     }
 
-    public boolean[] getTugendenEntscheidungProperty() { //TODO
-        return null;
+    public String[] getHintergrundBezeichnungProperty() {
+        String[] hintergrundBezeichnung = new String[5];
+        for (int i = 0; i < hintergrundProperty.length; i++){
+            hintergrundBezeichnung[i] = hintergrundProperty[i][1].getValue().toString();
+        }
+        return hintergrundBezeichnung;
     }
 
-    public int[] getTugendenProperty() { //TODO
-        return null;
-    }
-
-    public String[] getHintergrundBezeichnungProperty() { //TODO
-        return null;
-    }
-
-    public int[] getHintergrundWertProperty() { //TODO
-        return null;
+    public int[] getHintergrundWertProperty() {
+        int[] hintergrundWert = new int[3];
+        for (int i = 0; i < hintergrundProperty.length; i++) {
+            hintergrundWert[i] = Integer.parseInt(hintergrundProperty[i][0].getValue().toString());
+        }
+        return hintergrundWert;
     }
 }
