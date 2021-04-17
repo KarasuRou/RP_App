@@ -37,14 +37,16 @@ public class Form {
         root.getChildren().addAll(menuBar.getMenueBar(), secondRoot);
 
 
-        Scene scene = new Scene(root,1850,800);
+        Scene scene = new Scene(root,1900,850);
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setFullScreen(true);
         scene.getStylesheets().add(Form.class.getResource("Style.css").toExternalForm());
         charController.setNodes(
                 playerInfoNode,menuBar,attributeNode,faehigkeitenNode,vorteileNode,andereEigenschaftenNode,
                 wegNode,willenskraftNode,blutvorratNode,gesundheitNode,clansschwaecheNode,buttonField
         );
+        charController.setStage(stage);
 //        stage.widthProperty().addListener((observable, oldValue, newValue) -> System.out.println("Breite: "+newValue));
 //        stage.heightProperty().addListener((observable, oldValue, newValue) -> System.out.println("Höhe: "+newValue));
     }

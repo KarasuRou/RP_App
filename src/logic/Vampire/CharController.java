@@ -1,10 +1,15 @@
 package logic.Vampire;
 
+import UI.Main_Window;
 import UI.Vampire.Char.Components.*;
 import data.Vamp_CharData;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.Vamp_Char;
 
 import java.sql.ResultSet;
@@ -30,6 +35,7 @@ public class CharController {
     private static GesundheitNode gesundheitNode;
     private static ClansschwaecheNode clansschwaecheNode;
     private static ButtonField buttonField;
+    private Stage stage;
 
     public void displayTemplate(int id) throws Exception {
         Vamp_Char vampChar = getCharById(id);
@@ -308,21 +314,41 @@ public class CharController {
         setCreateNewCharButtonEvent();
         setUpdateVampCharButtonEvent();
         buttonField.enableCreateNewCharButton();
-        setCharMenue();
+        setMenues();
+    }
+    private void setMenues(){setDateiMenue();setExtraMenue();setCharMenue();}
+    private void setDateiMenue(){
+        MenuItem vollbild = new MenuItem("Vollbild");
+        MenuItem close = new MenuItem("Anwendung schließen");
+        vollbild.setOnAction(event -> stage.setFullScreen(!stage.isFullScreen()));
+        close.setOnAction(event -> Platform.exit());
+        menuBar.setMenuOne(new MenuItem[]{vollbild,close},"Datei");
+    }
+    private void setExtraMenue(){
+        MenuItem menuItem = new MenuItem();
+        menuBar.setMenuTwo(new MenuItem[]{menuItem},"Extra-Info");
     }
     private void setCharMenue(){
-        MenuItem[] menuItems = new MenuItem[getCharCount()];
+        MenuItem[] menuItems = new MenuItem[getCharCount()+1];
         for (int i = 0 ; i<menuItems.length ; i++){
-            MenuItem menuItem = new MenuItem();
-            menuItems[i] = menuItem;
-            menuItem.setId(String.valueOf(i));
-            menuItem.setText(getCharName(i) + " (" + getPlayerName(i) + ")");
-            menuItem.setOnAction(event -> {
-                id = Integer.parseInt(event.getSource().toString().replace("MenuItem[id=","").replace(", styleClass=[menu-item]]",""));
-                setVampChar(id);
-            });
+            if(i==1)
+                menuItems[i] = new SeparatorMenuItem();
+            else
+            {
+                MenuItem menuItem = new MenuItem();
+                menuItems[i] = menuItem;
+                menuItem.setId(String.valueOf(i));
+                if(i==0)
+                    menuItem.setText("Neuen Charakter erstellen");
+                else
+                    menuItem.setText(getCharName(i) + " (" + getPlayerName(i) + ")");
+                menuItem.setOnAction(event -> {
+                    id = Integer.parseInt(event.getSource().toString().replace("MenuItem[id=","").replace(", styleClass=[menu-item]]",""));
+                    setVampChar(id);
+                });
+            }
         }
-        menuBar.setCharMenu(menuItems);
+        menuBar.setMenuThree(menuItems,"Charaktere");
     }
 
     public void setVampChar(int id){
@@ -386,4 +412,7 @@ public class CharController {
     }
 
 
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 }
