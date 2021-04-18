@@ -36,7 +36,7 @@ public class AndereEigenschaftenNode {
     public void setAndereEigenschaften(String[] andereEigenschaftenBezeichnung, int[] andereEigenschaftenWert) {
         for (int i=0;i<andereEigenschaftenWert.length;i++){
             andereEigenschaftenProperty[i][0].setValue(andereEigenschaftenWert[i]);
-            andereEigenschaftenProperty[i][0].setValue(andereEigenschaftenBezeichnung[i]);
+            andereEigenschaftenProperty[i][1].setValue(andereEigenschaftenBezeichnung[i]);
         }
     }
 

@@ -29,10 +29,10 @@ public class ClansschwaecheNode {
 
     public void setClansschwaeche(String[] clansschweache) {
         if (clansschweache.length == 1)
-            clansschwaecheTextProperty.setValue(clansschweache);
+            clansschwaecheTextProperty.setValue(clansschweache[0]);
     }
 
-    public String[] getClansschwaeche() { //TODO
-        return null;
+    public String[] getClansschwaeche() {
+        return new String[]{clansschwaecheTextProperty.getValue().toString()};
     }
 }
