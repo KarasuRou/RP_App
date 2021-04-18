@@ -22,13 +22,15 @@ public class dbConnection {
 
     public ResultSet executeInsertQuery(String query) throws Exception{
         PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.execute();
+        boolean finished = preparedStatement.execute();
+        if (!finished) throw new SQLException("INSERT FAILED! (Update? No ResultSet?)");
         return preparedStatement.getGeneratedKeys();
     }
 
     public void executeUpdateQuery(String query) throws Exception{
         Statement statement = conn.createStatement();
-        statement.executeUpdate(query);
+        int finished = statement.executeUpdate(query);
+        if (finished == 0) throw new SQLException("NO ROW UPDATED");
         statement.close();
     }
 }
