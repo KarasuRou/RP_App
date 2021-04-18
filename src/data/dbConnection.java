@@ -27,10 +27,8 @@ public class dbConnection {
         return preparedStatement.getGeneratedKeys();
     }
 
-    public void executeUpdateQuery(String query) throws Exception{
-        Statement statement = conn.createStatement();
-        int error = statement.executeUpdate(query);
-        if (error == 0) throw new SQLException("NO ROW UPDATED");
-        statement.close();
+    public ResultSet executeUpdateSelectQuery(String query) throws Exception{
+        Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        return statement.executeQuery(query);
     }
 }
