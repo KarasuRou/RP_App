@@ -1,10 +1,8 @@
 package logic.Vampire;
 
-import UI.Main_Window;
 import UI.Vampire.Char.Components.*;
 import data.Vamp_CharData;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
@@ -39,6 +37,10 @@ public class CharController {
 
     public void displayTemplate(int id) throws Exception {
         Vamp_Char vampChar = getCharById(id);
+        displayTemplate(vampChar);
+    }
+
+    public void displayTemplate(Vamp_Char vampChar){
         System.out.println("ID:             " + vampChar.getID());
         System.out.println("CharName:       " + vampChar.getCharName());
         System.out.println("Spieler:        " + vampChar.getSpieler());
@@ -70,9 +72,9 @@ public class CharController {
         System.out.println("Vor. Hin. Bez:  " + Arrays.toString(vampChar.getVorteileHintergrundBezeichnung()));
         System.out.println("Vor. Hin. Wert: " + Arrays.toString(vampChar.getVorteileHintergrundWert()));
         System.out.println("Vor. Tug. Ent:  " + Arrays.toString(vampChar.getVorteileTugendenEntscheidung()));
-        System.out.println("Vor. tug. Wert: " + Arrays.toString(vampChar.getVorteileTugenden()));
+        System.out.println("Vor. Tug. Wert: " + Arrays.toString(vampChar.getVorteileTugenden()));
         System.out.println("And. Eig. Bez:  " + Arrays.toString(vampChar.getAndereEigenschaftenBezeichnung()));
-        System.out.println("And. Eug. Wert: " + Arrays.toString(vampChar.getAndereEigenschaftenWert()));
+        System.out.println("And. Eig. Wert: " + Arrays.toString(vampChar.getAndereEigenschaftenWert()));
     }
 
 
@@ -91,7 +93,7 @@ public class CharController {
         resultSet.last();
         int lastRow = resultSet.getRow();
         resultSet.first();
-        for(i = 0;i<lastRow;i++){
+        for (i = 0; i < lastRow; i++) {
             vampChar.setCharName(resultSet.getString("charName"));
             vampChar.setSpieler(resultSet.getString("spieler"));
             vampChar.setWesen(resultSet.getString("wesen"));
@@ -330,6 +332,9 @@ public class CharController {
     }
     private void setCharMenue(){
         MenuItem[] menuItems = new MenuItem[getCharCount()+1];
+        int ids[] = getIDs();
+        System.out.println(Arrays.toString(ids));
+        int separateCounter = 0;
         for (int i = 0 ; i<menuItems.length ; i++){
             if(i==1)
                 menuItems[i] = new SeparatorMenuItem();
@@ -337,27 +342,47 @@ public class CharController {
             {
                 MenuItem menuItem = new MenuItem();
                 menuItems[i] = menuItem;
-                menuItem.setId(String.valueOf(i));
+                menuItem.setId(String.valueOf(ids[separateCounter]));
                 if(i==0)
                     menuItem.setText("Neuen Charakter erstellen");
                 else
-                    menuItem.setText(getCharName(i) + " (" + getPlayerName(i) + ")");
+                    menuItem.setText(getCharName(ids[separateCounter]) + " (" + getPlayerName(ids[separateCounter]) + ")");
                 menuItem.setOnAction(event -> {
                     id = Integer.parseInt(event.getSource().toString().replace("MenuItem[id=","").replace(", styleClass=[menu-item]]",""));
                     setVampChar(id);
                 });
+                separateCounter++;
             }
+            System.out.println(i);
         }
+        System.out.println("finished");
         menuBar.setMenuThree(menuItems,"Charaktere");
+    }
+
+    private int[] getIDs() {
+        try {
+            ResultSet resultSet = vampCharData.getVampireCharIDs();
+            resultSet.last();
+            int[] ids = new int[resultSet.getRow()];
+            resultSet.beforeFirst();
+            int i=0;
+            while (resultSet.next()) {
+                ids[i++] = resultSet.getInt("id");
+            }
+            return ids;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new int[]{0};
+        }
     }
 
     public void setVampChar(int id){
         if (id == 0){buttonField.enableCreateNewCharButton();}
         else {buttonField.disableCreateNewCharButton();}
         try {
-            displayTemplate(id);
             Vamp_Char vampChar;
             vampChar = getCharById(id);
+            displayTemplate(vampChar);
             playerInfoNode.setCharName(vampChar.getCharName());
             playerInfoNode.setSpieler(vampChar.getSpieler());
             playerInfoNode.setWesen(vampChar.getWesen());
@@ -388,10 +413,22 @@ public class CharController {
     }
 
 
-    public void updateVampChar(int id){
+    public void updateVampChar(){
+        try {
+           UpdateCharController updateCharController = new UpdateCharController(getCurrentVampChar(),getCharById(id), stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-        System.out.println("UPDATE");
-
+    public int createNewVampChar(){
+        CreateCharController createCharController = new CreateCharController(getCurrentVampChar(), stage);
+        if (createCharController.wasCreated()) {
+            buttonField.disableCreateNewCharButton();
+            return createCharController.getID();
+        } else {
+            return 0;
+        }
     }
 
     public Vamp_Char getCurrentVampChar(){
@@ -431,18 +468,12 @@ public class CharController {
         return vamp_char;
     }
 
-    public int createNewVampChar(){
-        Vamp_Char vamp_char = getCurrentVampChar();
-        buttonField.disableCreateNewCharButton();
-        return 0;
-    }
-
     //////////////////////////////////////////
     // EventHandler
     //////////////////////////////////////////
 
     private void setUpdateVampCharButtonEvent(){
-        EventHandler<MouseEvent> event = event1 -> updateVampChar(id);
+        EventHandler<MouseEvent> event = event1 -> updateVampChar();
         buttonField.setUpdateCharEvent(event);
     }
 
