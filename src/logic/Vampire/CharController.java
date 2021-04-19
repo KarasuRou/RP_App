@@ -315,7 +315,6 @@ public class CharController {
         this.buttonField = buttonField;
         setCreateNewCharButtonEvent();
         setUpdateVampCharButtonEvent();
-        buttonField.enableCreateNewCharButton();
         setMenues();
     }
     private void setMenues(){setDateiMenue();setExtraMenue();setCharMenue();}
@@ -333,7 +332,6 @@ public class CharController {
     private void setCharMenue(){
         MenuItem[] menuItems = new MenuItem[getCharCount()+1];
         int ids[] = getIDs();
-        System.out.println(Arrays.toString(ids));
         int separateCounter = 0;
         for (int i = 0 ; i<menuItems.length ; i++){
             if(i==1)
@@ -353,9 +351,7 @@ public class CharController {
                 });
                 separateCounter++;
             }
-            System.out.println(i);
         }
-        System.out.println("finished");
         menuBar.setMenuThree(menuItems,"Charaktere");
     }
 

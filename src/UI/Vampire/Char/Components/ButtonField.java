@@ -30,7 +30,7 @@ public class ButtonField {
     }
 
     public void disableCreateNewCharButton(){
-        if (root.getChildren().contains(createChar)) {
+        if (!root.getChildren().contains(updateChar)) {
             root.getChildren().remove(createChar);
             root.getChildren().add(updateChar);
         }
