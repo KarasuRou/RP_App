@@ -1,6 +1,8 @@
 package data;
 
+import java.io.File;
 import java.sql.*;
+import java.util.Scanner;
 
 public class dbConnection {
 
@@ -8,12 +10,36 @@ public class dbConnection {
 
     public dbConnection(){
         try {
-            conn = DriverManager.getConnection("jdbc:mysql:", "", "");
+            String[] strings = getConnectionStrings();
+            conn = DriverManager.getConnection(strings[0],strings[1],strings[2]);
             conn.setClientInfo("autoReconnect","true");
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
+
+    private String[] getConnectionStrings() throws Exception{
+        String[] strings = new String[3];
+        File file = new File("application.conf");
+        System.out.println(file.getAbsolutePath());
+        Scanner input = new Scanner(file);
+        int i = 0;
+        while (input.hasNext() && i != 3) {
+            String string = input.nextLine();
+            if (string.contains("database.url:")) {
+                string = string.replaceAll("\\s","").replace("database.url:", "");
+                strings[i++] = string;
+            } else if (string.contains("database.username:")) {
+                string = string.replaceAll("\\s","").replace("database.username:", "");
+                strings[i++] = string;
+            } else if (string.contains("database.password:")) {
+                string = string.replaceAll("\\s","").replace("database.password:", "");
+                strings[i++] = string;
+            }
+        }
+        return strings;
+    }
+
 
     public ResultSet executeSelectQuery(String query) throws Exception{
         Statement statement = conn.createStatement();
