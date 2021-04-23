@@ -331,7 +331,7 @@ public class CharController {
     }
     private void setCharMenue(){
         MenuItem[] menuItems = new MenuItem[getCharCount()+1];
-        int ids[] = getIDs();
+        int[] ids = getIDs();
         int separateCounter = 0;
         for (int i = 0 ; i<menuItems.length ; i++){
             if(i==1)

@@ -38,7 +38,13 @@ public class Main_Window {
             Button menuItem = new Button("UPDATE VERFÜGBAR");
             CustomMenuItem customMenuItem = new CustomMenuItem(menuItem);
             menuItem.setStyle("-fx-background-color: lightgreen");
-            menuItem.setOnAction(event -> mainWindowController.getUpdater(stage,updater));
+            menuItem.setOnAction(event -> {
+                try {
+                    mainWindowController.getUpdater(stage,updater);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
             uberMenu.getItems().add(customMenuItem);
         }
     }

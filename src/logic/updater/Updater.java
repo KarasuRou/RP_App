@@ -14,6 +14,7 @@ public class Updater {
     private URL url;
     private String[] paths;
     private String newVersion;
+    private String currentVersion;
 
     public Updater(){
         try {
@@ -55,12 +56,31 @@ public class Updater {
         String thisVersionText = "";
         while (scanner.hasNext()) {thisVersionText += scanner.nextLine();}
         scanner.close();
-        if (Double.parseDouble(versionText) > Double.parseDouble(thisVersionText)){available = true;newVersion = versionText;}
+
+        newVersion=versionText;
+        currentVersion=thisVersionText;
+        if (Double.parseDouble(versionText) > Double.parseDouble(thisVersionText)){available=true;}
         else {available = false;}
     }
 
     public boolean isUpdateAvailable(){
         return available;
+    }
+
+    public String loadPatchNotes() throws Exception{
+        String patchNote = null;
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(new URL(paths[1] + newVersion + "/Patch-Notes.txt").openConnection().getInputStream()));
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            if (patchNote == null) {
+                patchNote = inputLine;
+            }
+            else
+                patchNote = patchNote + "\n" + inputLine;
+        }
+        in.close();
+        return patchNote;
     }
 
     public void loadUpdate() throws Exception{
@@ -96,5 +116,13 @@ public class Updater {
         ProcessBuilder builder = new ProcessBuilder(command);
         builder.start();
         System.exit(0);
+    }
+
+    public String getCurrentVersion() {
+        return currentVersion;
+    }
+
+    public String getNewVersion() {
+        return newVersion;
     }
 }
