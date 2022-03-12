@@ -1,9 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" name="RP_Application">
+  <artifact type="javafx" build-on-make="true" name="RP_Application">
     <output-path>$PROJECT_DIR$/out/artifacts/RP_Application</output-path>
     <properties id="javafx-properties">
       <options>
-        <option name="appClass" value="logic.Main" />
+        <option name="appClass" value="UI.Main" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
         <option name="title" value="" />
@@ -15,6 +15,7 @@
       <element id="archive" name="RP_Application.jar">
         <element id="module-output" name="RP_Application" />
       </element>
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-java-8.0.18.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

@@ -1,5 +1,7 @@
-package UI.Components;
+package UI.Vampire.Components;
 
+import UI.Vampire.Components.CircleRow.CircleRow;
+import UI.Vampire.Components.CircleRow.PrefilledCircle;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
@@ -21,11 +23,13 @@ public class TextCircle {
         hBox.getChildren().addAll(V1, V2);
     }
 
-    public void addRow(String designation, int CircleAmount){
+    public CircleRow addRow(String designation, int CircleAmount, PrefilledCircle prefilledCircle){
         Text text = new Text(designation);
         text.getStyleClass().add("normalText");
         V1.getChildren().add(text);
-        V2.getChildren().add(new CircleRow(CircleAmount,designation).getCircleRow());
+        CircleRow circleRow = new CircleRow(CircleAmount,designation, prefilledCircle);
+        V2.getChildren().add(circleRow.getCircleRow());
+        return circleRow;
     }
 
     public Node getTextCircle(){

@@ -1,13 +1,8 @@
-package logic;
+package UI;
 
-import UI.Vamp_Char.Form;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import logic.Vamp_Char.Vamp_CharController;
-import model.Vamp_Char;
-
-import java.util.Arrays;
 
 public class Main extends Application {
 
@@ -21,7 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage){
         if (i != 0) {
-            Form vampCharForm = new Form();
+            Main_Window mainWindow = new Main_Window();
         }
         else {
             Platform.exit();
@@ -36,7 +31,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         try {
             new Thread(() -> launch(args)).start();
-//            new Vamp_CharController().displayTemplate();
+//            new CharController().displayTemplate();
 
         } catch (Exception e) {
             e.printStackTrace();

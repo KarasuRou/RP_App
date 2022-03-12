@@ -2,7 +2,31 @@
     -fx-background-color: #c4b2b2;
 }
 
-.vorteileInputText TextField{
+.transparentTextField{
+    -fx-background-color: Transparent !important;
+}
+
+.auraWertTextField{
+    -fx-min-width: 39.0;
+    -fx-max-width: 40.0;
+    -fx-font-size: 14;
+}
+
+.auraBezeichnung Label{
+    -fx-min-width: 45.0;
+    -fx-max-width: 46.0;
+}
+
+.clanschwaeche TextField{
+    -fx-border-insets: 0 0 0 0 !important;
+    -fx-background-insets: 0 0 0 0!important;
+}
+
+.gesundheit{
+    -fx-font-size: 15 !important;
+}
+
+.vampireTextField TextField{
     -fx-border-color: black;
     -fx-background-color: #a0a0a0;
     -fx-background-radius: 5;
@@ -12,12 +36,6 @@
 }
 
 .playerInfoInputText TextField{
-    -fx-border-color: black;
-    -fx-background-color: #a0a0a0;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-    -fx-border-insets: 0 10 5 0;
-    -fx-background-insets: 0 10 5 0;
     -fx-min-width: 190;
 }
 

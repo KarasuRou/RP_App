@@ -1,6 +1,6 @@
-package UI.Components;
+package UI.Vampire.Components;
 
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.Property;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,7 +24,7 @@ public class TextInputtext {
     public TextInputtext(){
     }
 
-    public void addRow(String labelText){ //StringProperty
+    public Property addRow(String labelText){ //StringProperty
         HBox hBox = new HBox();
         Label label = new Label(labelText);
         label.getStyleClass().add("normalText");
@@ -32,7 +32,7 @@ public class TextInputtext {
         hBox.getChildren().add(label);
         hBox.getChildren().add(textField);
         root.getChildren().add(hBox);
-//        return textField.textProperty();
+        return textField.textProperty();
     }
 
     public Node getTextInputtext() {
